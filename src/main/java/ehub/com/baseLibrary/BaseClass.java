@@ -159,7 +159,7 @@ public class BaseClass {
 			excelName="\\src\\test\\resources\\testData\\testDataForOilfield.xlsx";
 	
 		}else {
-			System.out.println("Kindly pass the right Excel patyh for Test Environment");
+			System.out.println("Kindly pass the right Excel patyh for Test Environment.");
 		}
 		return excelName;
 	}
