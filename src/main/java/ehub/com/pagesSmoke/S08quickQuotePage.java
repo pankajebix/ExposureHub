@@ -8,11 +8,11 @@ import ehub.com.pages.CommonLocatorsAndMethod;
 
 public class S08quickQuotePage {
 
-	// private WebDriver driver;
+	//private WebDriver driver;
 	CommonLocatorsAndMethod common;
 
 	public S08quickQuotePage(WebDriver driver) {
-		// this.driver = driver;
+		//this.driver = driver;
 		PageFactory.initElements(driver, this);
 		common = new CommonLocatorsAndMethod(driver);
 	}
@@ -21,8 +21,8 @@ public class S08quickQuotePage {
 		common.login(AppConstants.username_UQ, AppConstants.password_UQ);
 	}
 
-	public void quickQuote() {
-		common.quickQuote();
+	public String quickQuote() {
+		String actualQuickQuotePolicy=common.quickQuote("bethel");
+		return actualQuickQuotePolicy;
 	}
-
 }

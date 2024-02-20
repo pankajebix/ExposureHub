@@ -184,6 +184,9 @@ public class CommonLocatorsAndMethod {
 
 	@FindBy(xpath = "//span[@class='mat-button-wrapper'][contains(.,'doneSave')]")
 	public WebElement saveButton;
+	
+	@FindBy(xpath = "//span[@class='mat-button-wrapper'][contains(.,'Save')]/parent::button")
+	public WebElement saveButton2;
 
 	@FindBy(xpath = "(//span[@class='mat-button-wrapper'][contains(.,'cancelCancel')])[last()]")
 	public WebElement cancelButton;
@@ -381,6 +384,9 @@ public class CommonLocatorsAndMethod {
 	
 	@FindBy(xpath = "//span[contains(.,'refresh Refresh')]")
 	public WebElement refreshButton;
+	
+	@FindBy(xpath = "(//div[@class='import-policy-title']/span)[1]")
+	public WebElement quickQuoteAutomaticPolicyNumberEle;
 	
 	public void login(String userName, String password) {
 		loginPage.doLogin(userName, password);
@@ -3807,7 +3813,8 @@ public class CommonLocatorsAndMethod {
 		return verifyRenewPolicy;
 	}
 
-	public void quickQuote() {
+	public String quickQuote(String countyValue) {
+		String actualPolicyQuickQuote=null;
 		try {
 			eleUtil.waitForElementVisibleAndToBeClickable(HomePage_PolicyLinkButton, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.clickElementByJS(HomePage_PolicyLinkButton);
@@ -3818,32 +3825,46 @@ public class CommonLocatorsAndMethod {
 			jsUtil.clickElementByJS(quickQuotePlus_Button);
 			log.info("Clicked on Quick Quote Button");
 			
+			String quickQuoteAutoPolicy=quickQuoteAutomaticPolicyNumberEle.getText();
+			String s[]=quickQuoteAutoPolicy.split(",");
+			log.info("Auto Generated Policy Number : "+s[0]);
+			
 			eleUtil.waitForElementVisibleAndToBeClickable(searchButton, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.clickElementByJS(searchButton);
 			log.info("Clicked on Search Button");
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(countyInputGrid, AppConstants.DEFAULT_LONG_TIME_OUT);
 			countyInputGrid.clear();
-			countyInputGrid.sendKeys("bethel");
+			countyInputGrid.sendKeys(countyValue);
 			Thread.sleep(8000);
-			log.info("Enter County Data : "+"");
+			log.info("Enter County Data : "+countyValue);
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(addSingleScheduleData, AppConstants.DEFAULT_LONG_TIME_OUT);
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_LONG_TIME_OUT, addSingleScheduleData);
 
 			jsUtil.clickElementByJS(addSingleScheduleData);
-			log.info("Select Schedule Dataa");
+			log.info("Select Schedule Data");
 			
-//			eleUtil.waitForElementVisibleAndToBeClickable(runButton, AppConstants.DEFAULT_LONG_TIME_OUT);
-//			jsUtil.clickElementByJS(runButton);
-//			log.info("Clicked on Run");
+			eleUtil.waitForElementVisibleAndToBeClickable(runButton, AppConstants.DEFAULT_LONG_TIME_OUT);
+			eleUtil.waitForElementVisibleAndToBeClickable(runButton, AppConstants.DEFAULT_LONG_TIME_OUT);
+			jsUtil.clickElementByJS(runButton);
+			log.info("Clicked on Run");
+			Thread.sleep(59000);
 			
-//			eleUtil.waitForElementVisibleAndToBeClickable(close, AppConstants.DEFAULT_LONG_TIME_OUT);
-//			jsUtil.clickElementByJS(runButton);
-//			log.info("Clicked on Run");
+			jsUtil.clickElementByJS(saveButton2);
+			log.info("Clicked on Save");
+			Thread.sleep(10000);
+			
+			eleUtil.waitForElementVisibleAndToBeClickable(hubNavigation, AppConstants.DEFAULT_LONG_TIME_OUT);
+			eleUtil.waitForElementVisibleAndToBeClickable(hubNavigation, AppConstants.DEFAULT_LONG_TIME_OUT);
+			jsUtil.clickElementByJS(hubNavigation);
+			log.info("Clicked on Hub Navigation");
+			
+			actualPolicyQuickQuote=s[0];					
 			
 		} catch (Exception e) {
 			System.out.println("Issue in Common.quickQuote "+e);
 		}
+		return actualPolicyQuickQuote;
 	}
 }
