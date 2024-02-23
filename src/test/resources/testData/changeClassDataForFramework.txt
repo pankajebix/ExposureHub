@@ -1,6 +1,0 @@
-Change SelectEntity locator
-Quick Navigation Page Test-->change classxpath and method name
-AppConstantPage-->change class name,
-AppConstantPage-->change class fraction value
-AppConstantPage-->change 1 or 2 or 3 class with together
-Peril Data-->one data should not be selected
