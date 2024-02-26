@@ -12,7 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class Excelutility {
+public class ExcelUtil {
 	public String path;
 	public FileInputStream fis = null;
 	public FileOutputStream fileOut = null;
@@ -21,7 +21,7 @@ public class Excelutility {
 	private XSSFRow row = null;
 	private XSSFCell cell = null;
 
-	public Excelutility(String path) {
+	public ExcelUtil(String path) {
 
 		this.path = path;
 		try {

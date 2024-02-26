@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import ehub.com.baseLibrary.BaseClass;
-import ehub.com.utils.Excelutility;
+import ehub.com.utils.ExcelUtil;
 
 public class AppConstants {
 
 	public static final String pathofExcelDataAsPerEnv =BaseClass.chooseTestEnvironment();
-	static Excelutility excUtil = new Excelutility(
+	static ExcelUtil excUtil = new ExcelUtil(
 			System.getProperty("user.dir") +pathofExcelDataAsPerEnv );
 
 	public static final int DEFAULT_MEDIUM_TIME_OUT = 10;

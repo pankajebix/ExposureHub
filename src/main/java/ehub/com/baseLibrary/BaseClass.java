@@ -27,7 +27,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 import ehub.com.constants.AppConstants;
-import ehub.com.utils.Excelutility;
+import ehub.com.utils.ExcelUtil;
 import ehub.com.utils.ExtentManager;
 import ehub.com.utils.PropertyUtility;
 import ehub.com.utils.TestUtility;
@@ -40,7 +40,7 @@ public class BaseClass {
 	public static ExtentReports extent;	
 	
 	static Logger log = Logger.getLogger(BaseClass.class);
-	public static Excelutility excUtil = new Excelutility(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
+	public static ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 	
 	
 	@BeforeSuite
@@ -145,7 +145,7 @@ public class BaseClass {
 	
 	public static String chooseTestEnvironment() {
 		String excelName = null;
-		Excelutility excUtil = new Excelutility(
+		ExcelUtil excUtil = new ExcelUtil(
 				System.getProperty("user.dir") + PropertyUtility.getProperty("pathofExcelTestData"));
 		String name=excUtil.getCellData("chooseTestEnvironment", "chooseTestEnvironment", 2);
 		

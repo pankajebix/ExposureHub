@@ -104,6 +104,11 @@ public class ElementUtil {
 		act.dragAndDrop(sourceElement, targetElement).build().perform();
 	}
 	
+	public void doActionsDragAndDrop(WebElement sourceElement, int xOffset, int yOffset) {
+		Actions act = new Actions(driver);
+		act.dragAndDropBy(sourceElement, xOffset, yOffset).build().perform();
+	}
+	
 	public void doActionsMoveToElement(WebElement ele) {
 		Actions act = new Actions(driver);
 		act.moveToElement(ele).build().perform();
@@ -129,16 +134,38 @@ public class ElementUtil {
 			System.out.println(attrVal);
 		}
 	}
+	
+	public void getElementAttributes(List<WebElement> eleList, String attrName) {
+		for (WebElement e : eleList) {
+			String attrVal = e.getAttribute(attrName);
+			System.out.println(attrVal);
+		}
+	}
 
 	public int getTotalElementsCount(By locator) {
 		int eleCount = getElements(locator).size();
 		System.out.println("total elements for : " + locator + "--->" + eleCount);
 		return eleCount;
 	}
+	
+	public int getTotalElementsCount(List <WebElement> eleList) {
+		int eleCount = eleList.size();
+		System.out.println("total elements for : " + eleList + "--->" + eleCount);
+		return eleCount;
+	}
 
 	public List<String> getElementsTextList(By locator) {
 		List<String> eleTextList = new ArrayList<String>();// size=0
 		List<WebElement> eleList = getElements(locator);
+		for (WebElement e : eleList) {
+			String text = e.getText();
+			eleTextList.add(text);
+		}
+		return eleTextList;
+	}
+	
+	public List<String> getElementsTextList(List<WebElement> eleList) {
+		List<String> eleTextList = new ArrayList<String>();// size=0
 		for (WebElement e : eleList) {
 			String text = e.getText();
 			eleTextList.add(text);

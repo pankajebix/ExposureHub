@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.locators.RelativeLocator;
 
 public class AAA {
@@ -29,8 +31,12 @@ public class AAA {
 		driver=new ChromeDriver();
 		driver.get("https://test-v2-eh.ebixexchange.com/login");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		WebElement screenshot =driver.findElement (By.xpath("//input[@data-placeholder='User Id']"));
 		
-		driver.findElement(RelativeLocator.with(By.tagName("button")).below(screenshot));		
+		WebElement ele=driver.findElement(null);
+		Actions action=new Actions(driver);
+		action.click(ele);
+		action.dragAndDropBy(ele, 0, 0);
+		action.getActiveKeyboard();
+		
 	}	
 }

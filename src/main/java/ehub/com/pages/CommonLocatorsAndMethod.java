@@ -14,7 +14,7 @@ import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import ehub.com.constants.AppConstants;
 import ehub.com.utils.ElementUtil;
-import ehub.com.utils.Excelutility;
+import ehub.com.utils.ExcelUtil;
 import ehub.com.utils.JavaScriptUtil;
 
 public class CommonLocatorsAndMethod {
@@ -22,7 +22,7 @@ public class CommonLocatorsAndMethod {
 	private WebDriver driver;
 	public ElementUtil eleUtil;
 	public JavaScriptUtil jsUtil;
-	public Excelutility excUtil;
+	public ExcelUtil excUtil;
 	LoginPage loginPage;
 
 	static Logger log = Logger.getLogger(CommonLocatorsAndMethod.class);
@@ -32,7 +32,7 @@ public class CommonLocatorsAndMethod {
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil(driver);
 		jsUtil = new JavaScriptUtil(driver);
-		excUtil = new Excelutility(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
+		excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 		loginPage = new LoginPage(driver);
 	}
 

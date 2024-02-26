@@ -8,13 +8,13 @@ import ehub.com.baseLibrary.BaseClass;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.CommonLocatorsAndMethod;
 import ehub.com.pagesSmoke.S08quickQuotePage;
-import ehub.com.utils.Excelutility;
+import ehub.com.utils.ExcelUtil;
 
 public class S08quickQuotePageTest extends BaseClass{
 	
 	S08quickQuotePage S08page;
 	CommonLocatorsAndMethod common;
-	Excelutility excUtil = new Excelutility(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
+	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {

@@ -90,6 +90,11 @@ public class JavaScriptUtil {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(document.body.scrollHeight, 0)");
 	}
+	
+	public void scrollPageUp(String height) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0, '" + "-"+height + "')");
+	}
 
 	public void scrollPageDownMiddlepage() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -126,12 +131,36 @@ public class JavaScriptUtil {
 	}
 	
 	public void scrollThroughYAxisValue(int yAxisValue) {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("scroll(0, "+yAxisValue+")");
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("scroll(0, "+yAxisValue+")");
 	}
 	
 	public void scrollThroughXAxisValue(int xAxisValue) {
-		JavascriptExecutor jse = (JavascriptExecutor) driver;
-		jse.executeScript("scroll("+xAxisValue+", 0)");
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("scroll("+xAxisValue+", 0)");
 	}
+	
+	//Fetching the Domain Name of the site. To string() change object to name.
+	
+	public String getDomainNameByJS() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		return js.executeScript("return document.domain;").toString();	
+	}
+	
+	//Fetching the URL of the site. To string() change object to name
+	
+	public String getURLByJS() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		return js.executeScript("return document.URL;").toString();		
+	}
+	
+	//Navigate to new Page i.e to generate access page. (launch new url)
+	
+	public void launchNewURLByJS(String newURL) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.location = '"+newURL+"'");		
+	}
+	
+	
+	
 }

@@ -6,12 +6,12 @@ import org.testng.annotations.Test;
 import ehub.com.baseLibrary.BaseClass;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.GetClassPerilsCoveragesEntity;
-import ehub.com.utils.Excelutility;
+import ehub.com.utils.ExcelUtil;
 
 public class GetClassPerilsCoveragesEntityTest extends BaseClass{
 	
 	GetClassPerilsCoveragesEntity getclassPage;
-	Excelutility excUtil = new Excelutility(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
+	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {

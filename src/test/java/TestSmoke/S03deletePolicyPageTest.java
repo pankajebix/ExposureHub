@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 import ehub.com.baseLibrary.BaseClass;
 import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S03deletePolicyPage;
-import ehub.com.utils.Excelutility;
+import ehub.com.utils.ExcelUtil;
 
 public class S03deletePolicyPageTest extends BaseClass{
 	
 	S03deletePolicyPage S03page;
-	Excelutility excUtil = new Excelutility(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
+	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {
