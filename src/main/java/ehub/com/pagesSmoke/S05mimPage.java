@@ -41,6 +41,7 @@ public class S05mimPage {
 			Thread.sleep(5000);
 			
 			common.eleUtil.waitForElementVisibleAndToBeClickable(mimSearchedReportPolicyMenuSelectData, AppConstants.DEFAULT_LONG_TIME_OUT);
+			common.eleUtil.waitForElementVisibleAndToBeClickable(mimSearchedReportPolicyMenuSelectData, AppConstants.DEFAULT_LONG_TIME_OUT);
 			common.jsUtil.clickElementByJS(mimSearchedReportPolicyMenuSelectData);
 			log.info("Clicked on Policy Data");
 			Thread.sleep(8000);

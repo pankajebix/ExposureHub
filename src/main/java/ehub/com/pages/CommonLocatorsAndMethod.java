@@ -1416,7 +1416,7 @@ public class CommonLocatorsAndMethod {
 			log.info("Enter Policy Number : " + policyNumberSearchData);
 			Thread.sleep(4000);
 
-			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_MEDIUM_TIME_OUT, 3, searchedPolicyData);
+			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_LONG_TIME_OUT, 3, searchedPolicyData);
 			verifySearchedPolicy = searchedPolicyData.getText();
 			log.info("Verify Searched Policy");
 			Thread.sleep(1000);
@@ -1507,11 +1507,12 @@ public class CommonLocatorsAndMethod {
 			log.info("Enter Policy Number : "+policyNumberSearchData);
 			
 			Thread.sleep(4000);
-			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_MEDIUM_TIME_OUT, 2, searchedPolicyData);
+			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_LONG_TIME_OUT, 2, searchedPolicyData);
 			verifySearchedPolicy = searchedPolicyData.getText();
 			Thread.sleep(1000);
 			
-			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, searchedPolicyData);
+			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_LONG_TIME_OUT, searchedPolicyData);
+			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_LONG_TIME_OUT, searchedPolicyData);
 			searchedPolicyData.click();
 			log.info("Clicked on Searched Policy");
 			//Thread.sleep(4000);
