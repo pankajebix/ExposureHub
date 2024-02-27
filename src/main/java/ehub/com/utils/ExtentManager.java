@@ -8,6 +8,8 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import ehub.com.baseLibrary.BaseClass;
+
 public class ExtentManager {
 	private static ExtentReports extent;
 
@@ -29,12 +31,24 @@ public class ExtentManager {
 		ExtentSparkReporter htmlReporter = new ExtentSparkReporter(fileName);
 		htmlReporter.config().setDocumentTitle(fileName);
 		//htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
-		htmlReporter.config().setReportName("Automation Report");
+		htmlReporter.config().setReportName("Exposure Hub Automation Report");
 		htmlReporter.config().setTheme(Theme.STANDARD);
 		//htmlReporter.config().setChartVisibilityOnOpen(true);
 		
 		htmlReporter.config().setEncoding("utf-8");
 		extent = new ExtentReports();
+		
+		//=====
+		extent.setSystemInfo("System", "Window");
+		extent.setSystemInfo("Author", "Pankaj Yadav");
+		extent.setSystemInfo("Build#", "103");
+		extent.setSystemInfo("Team", "QA Team");
+		
+		//extra		
+		extent.setSystemInfo("Environment Name", BaseClass.environmentName());
+		//extra
+		//=====
+		
 		extent.attachReporter(htmlReporter);
 		return extent;
 	}

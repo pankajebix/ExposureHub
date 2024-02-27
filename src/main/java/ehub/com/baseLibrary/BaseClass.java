@@ -32,17 +32,16 @@ import ehub.com.utils.ExtentManager;
 import ehub.com.utils.PropertyUtility;
 import ehub.com.utils.TestUtility;
 
-
 public class BaseClass {
 
 	public static ExtentTest test;
 	public static WebDriver driver;
-	public static ExtentReports extent;	
-	
+	public static ExtentReports extent;
+
 	static Logger log = Logger.getLogger(BaseClass.class);
-	public static ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
-	
-	
+	public static ExcelUtil excUtil = new ExcelUtil(
+			System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
+
 	@BeforeSuite
 	public void beforeSuite() {
 		extent = ExtentManager.getInstance();
@@ -53,10 +52,10 @@ public class BaseClass {
 	public void beforeTest() {
 		test = extent.createTest(getClass().getName());
 	}
-	
+
 	public void initilization() {
-		String browserName=excUtil.getCellData("basicDetails", "Value", 2).trim();
-		//String browserName = PropertyUtility.getProperty("browserName").trim();
+		String browserName = excUtil.getCellData("basicDetails", "Value", 2).trim();
+		// String browserName = PropertyUtility.getProperty("browserName").trim();
 //		ChromeOptions options = new ChromeOptions();
 //		FirefoxOptions optionsFirefox = new FirefoxOptions();
 //		EdgeOptions optionsEdge = new EdgeOptions();
@@ -66,48 +65,48 @@ public class BaseClass {
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			driver = new ChromeDriver();
-			log.info(browserName+" : is launched successfully");
+			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
-			log.info(browserName+" : is launched successfully");
+			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("ie")) {
 			driver = new InternetExplorerDriver();
-			log.info(browserName+" : is launched successfully");
+			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("edge")) {
 			driver = new EdgeDriver();
-			log.info(browserName+" : is launched successfully");
+			log.info(browserName + " : is launched successfully");
 		} else {
 			System.out.println("Kindly pass the right browser name.");
 			log.info("Kindly pass the right browser name.");
 		}
 
 		driver.manage().deleteAllCookies();
-		String url=excUtil.getCellData("basicDetails", "Value", 3);
-		//driver.get(PropertyUtility.getProperty("url"));
+		String url = excUtil.getCellData("basicDetails", "Value", 3);
+		// driver.get(PropertyUtility.getProperty("url"));
 		driver.get(url);
-		log.info("Enter URL : "+url);
+		log.info("Enter URL : " + url);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
-	
+
 	@BeforeMethod
-	public void beforeMethod(ITestResult result){		
-			log.info(result.getMethod().getMethodName() + " test is Started");
-			test.log(Status.INFO, result.getMethod().getMethodName() + " test is Started");			
+	public void beforeMethod(ITestResult result) {
+		log.info(result.getMethod().getMethodName() + " test is Started");
+		test.log(Status.INFO, result.getMethod().getMethodName() + " test is Started");
 	}
-	
+
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			log.info(result.getName() + " test is Failed" + result.getThrowable());
 			test.log(Status.FAIL, result.getName() + " test is Failed" + result.getThrowable());
-			//String imagePath = getScreenShots(result.getName());
-			//test.addScreenCaptureFromPath(imagePath);
-			test.fail(result.getThrowable(),
-					MediaEntityBuilder.createScreenCaptureFromPath(getScreenShots(result.getMethod().getMethodName())).build());
+			// String imagePath = getScreenShots(result.getName());
+			// test.addScreenCaptureFromPath(imagePath);
+			test.fail(result.getThrowable(), MediaEntityBuilder
+					.createScreenCaptureFromPath(getScreenShots(result.getMethod().getMethodName())).build());
 		} else if (result.getStatus() == ITestResult.SUCCESS) {
 			log.info(result.getName() + " test is pass");
 			test.log(Status.PASS, result.getName() + " is Pass");
@@ -124,7 +123,7 @@ public class BaseClass {
 	public static void logExtentReport(String msg) {
 		test.log(Status.INFO, msg);
 	}
-	
+
 	public static String getScreenShots(String imageName) {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
@@ -142,33 +141,40 @@ public class BaseClass {
 
 		return destFile.toString();
 	}
-	
+
 	public static String chooseTestEnvironment() {
 		String excelName = null;
 		ExcelUtil excUtil = new ExcelUtil(
 				System.getProperty("user.dir") + PropertyUtility.getProperty("pathofExcelTestData"));
-		String name=excUtil.getCellData("chooseTestEnvironment", "chooseTestEnvironment", 2);
-		
-		if(name.equals("Test")) {
-			excelName="\\src\\test\\resources\\testData\\testDataForTestEnvironment.xlsx";
-			
-		}else if(name.equals("Test V2")) {
-			excelName="\\src\\test\\resources\\testData\\testDataForTestV2Environment.xlsx";
-			
-		}else if(name.equals("Oilfield")) {
-			excelName="\\src\\test\\resources\\testData\\testDataForOilfield.xlsx";
-	
-		}else {
+		String name = excUtil.getCellData("chooseTestEnvironment", "chooseTestEnvironment", 2);
+
+		if (name.equals("Test")) {
+			excelName = "\\src\\test\\resources\\testData\\testDataForTestEnvironment.xlsx";
+
+		} else if (name.equals("Test V2")) {
+			excelName = "\\src\\test\\resources\\testData\\testDataForTestV2Environment.xlsx";
+
+		} else if (name.equals("Oilfield")) {
+			excelName = "\\src\\test\\resources\\testData\\testDataForOilfield.xlsx";
+
+		} else {
 			System.out.println("Kindly pass the right Excel patyh for Test Environment.");
 		}
 		return excelName;
+	}
+
+	public static String environmentName() {
+		ExcelUtil excUtil = new ExcelUtil(
+				System.getProperty("user.dir") + PropertyUtility.getProperty("pathofExcelTestData"));
+		String name = excUtil.getCellData("chooseTestEnvironment", "chooseTestEnvironment", 2);
+		return name;
 	}
 
 	@AfterTest
 	public void tearDown() {
 		try {
 			Thread.sleep(1000);
-			//driver.close();
+			// driver.close();
 			driver.quit();
 
 		} catch (Exception e) {

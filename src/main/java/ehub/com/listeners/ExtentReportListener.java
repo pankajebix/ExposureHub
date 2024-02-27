@@ -43,15 +43,17 @@ public class ExtentReportListener implements ITestListener {
 
 		extentReports = new ExtentReports();
 		ExtentSparkReporter reporter = new ExtentSparkReporter(OUTPUT_FOLDER + FILE_NAME);
-		reporter.config().setReportName("Exposure Hub Automation Test Results");
+		reporter.config().setReportName("Exposure Hub Automation Report");
 		extentReports.attachReporter(reporter);
 		extentReports.setSystemInfo("System", "Window");
-		extentReports.setSystemInfo("Author", "QA Team of Exposure Hub");
-		extentReports.setSystemInfo("Build#", "1.1");
+		extentReports.setSystemInfo("Author", "Pankaj Yadav");
+		extentReports.setSystemInfo("Build#", "103");
 		extentReports.setSystemInfo("Team", "QA Team");
-
-		// extentReports.setSystemInfo("ENV NAME", System.getProperty("env"));
-
+		
+		//extra		
+		extentReports.setSystemInfo("Environment Name", BaseClass.environmentName());
+		//extra
+		
 		return extentReports;
 	}
 
@@ -98,6 +100,7 @@ public class ExtentReportListener implements ITestListener {
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
+	@Override
 	public synchronized void onTestFailure(ITestResult result) {
 		//System.out.println((result.getMethod().getMethodName() + " failed!"));
 		String methodName = result.getMethod().getMethodName();
@@ -109,6 +112,7 @@ public class ExtentReportListener implements ITestListener {
 //		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
+	@Override
 	public synchronized void onTestSkipped(ITestResult result) {
 		//System.out.println((result.getMethod().getMethodName() + " skipped!"));
 		//String methodName = result.getMethod().getMethodName();
@@ -117,6 +121,7 @@ public class ExtentReportListener implements ITestListener {
 		test.get().getModel().setEndTime(getTime(result.getEndMillis()));
 	}
 
+	@Override
 	public synchronized void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		System.out.println(("onTestFailedButWithinSuccessPercentage for " + result.getMethod().getMethodName()));
 	}
