@@ -62,17 +62,23 @@ public class S02updatePolicyPageTest extends BaseClass{
 	
 	@Test(priority = 7, enabled = true)
 	public void editCyberSchedule() {
-		S02page.editCyberSchedule();
+		boolean expected=true;
+		boolean actual=S02page.editCyberSchedule();
+		Assert.assertEquals(actual, expected);
 	}
 	
 	@Test(priority = 8, enabled = true)
 	public void editOffshoreSchedule() {
-		S02page.editOffshoreSchedule();
+		boolean expected=true;
+		boolean actual=S02page.editOffshoreSchedule();
+		Assert.assertEquals(actual, expected);
 	}	
 	
 	@Test(priority = 9, enabled = true)
 	public void editOffshoreRenewablesSchedule() {
-		S02page.editOffshoreRenewablesSchedule();
+		boolean expected=true;
+		boolean actual=S02page.editOffshoreRenewablesSchedule();
+		Assert.assertEquals(actual, expected);
 	}
 	
 	@Test(priority = 10, enabled = true)

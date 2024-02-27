@@ -43,16 +43,19 @@ public class S02updatePolicyPage {
 		String actual=common.copyLimit(validationMessage);
 		return actual;
 	}
-	public void editCyberSchedule() {
-		common.editSchedule(AppConstants.class_Cyber_Fraction_Value, AppConstants.schedule_Option_Data_Assured_Interest, "80");
+	public boolean editCyberSchedule() {
+		boolean actual = common.editSchedule(AppConstants.class_Cyber_Fraction_Value, AppConstants.schedule_Option_Data_Assured_Interest, "80");
+		return actual;
 	}
 	
-	public void editOffshoreSchedule() {
-		common.editSchedule(AppConstants.class_Offshore_Fraction_Value, AppConstants.schedule_Option_Data_Assured_Interest, "85");
+	public boolean editOffshoreSchedule() {
+		boolean actual = common.editSchedule(AppConstants.class_Offshore_Fraction_Value, AppConstants.schedule_Option_Data_Assured_Interest, "85");
+		return actual;
 	}
 	
-	public void editOffshoreRenewablesSchedule() {
-		common.editSchedule(AppConstants.class_Offshore_Renewables_Fraction_Value, AppConstants.schedule_Option_Data_Assured_Interest, "95");
+	public boolean editOffshoreRenewablesSchedule() {
+		boolean actual = common.editSchedule(AppConstants.class_Offshore_Renewables_Fraction_Value, AppConstants.schedule_Option_Data_Assured_Interest, "95");
+		return actual;
 	}
 	
 	public void viewPointDataOnMap() {

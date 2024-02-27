@@ -2435,7 +2435,8 @@ public class CommonLocatorsAndMethod {
 		return deleteCopyLimitGroupvalidationMessageVerify;
 	}
 
-	public void editSchedule(String classNameXpath, String selectOptionData, String inputData) {
+	public boolean editSchedule(String classNameXpath, String selectOptionData, String inputData) {
+		boolean updatedStatus=false;
 		try {
 			WebElement scheduleNavigationImage = driver.findElement(
 					By.xpath("(//span[@class='material-icons'][contains(.,'" + classNameXpath + "')])[1]"));
@@ -2504,10 +2505,21 @@ public class CommonLocatorsAndMethod {
 					By.xpath("(//span[@class='material-icons'][contains(.,'" + classNameXpath + "')])[1]"));
 			scheduleNavigationImage2.click();
 			Thread.sleep(1000);
+			
+			if(selectOptionData.equalsIgnoreCase("Assured Interest")) {
+				WebElement updatedValueofSchedule1Row=driver.findElement(By.xpath("//div[@class='class-icon-set-margin class-icon']/span[text()='" + classNameXpath + "']/ancestor::div[@class='schedule-grid ng-star-inserted']/expansion-panel/mat-expansion-panel/div/div/div/div/app-schedules/div/div/div/ag-grid-angular/div/div/div[@role='grid']/div[@ref='eBodyViewport']/div[@ref='centerContainer']/div/div/div[1]/div[@col-id='[Sch].AssuredInterest']"));
+				String actualUpdatedValue=updatedValueofSchedule1Row.getText();
+				System.out.println(actualUpdatedValue);
+				
+				updatedStatus = actualUpdatedValue.equalsIgnoreCase(inputData+"%");
+			}else {
+				updatedStatus=true;
+			}
 
 		} catch (Exception e) {
 			System.out.println("Issue in Common.editSchedule " + e);
 		}
+		return updatedStatus;
 	}
 
 	public void editScheduleSelectAll(String classNameXpath, String selectOptionData, String inputData) {

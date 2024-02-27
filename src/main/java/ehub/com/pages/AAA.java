@@ -27,16 +27,12 @@ public class AAA {
 //		
 //		Assert.assertTrue(a);
 		
-		WebDriver driver = null;
-		driver=new ChromeDriver();
-		driver.get("https://test-v2-eh.ebixexchange.com/login");
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		
-		WebElement ele=driver.findElement(null);
-		Actions action=new Actions(driver);
-		action.click(ele);
-		action.dragAndDropBy(ele, 0, 0);
-		action.getActiveKeyboard();
+		String s="daataa%";
+		if(s.equalsIgnoreCase("Daataa"+"%")) {
+			System.out.println("pass");
+		}else {
+			System.out.println("fail");
+		}
 		
 	}	
 }
