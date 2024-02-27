@@ -43,7 +43,7 @@ public class ExtentReportListener implements ITestListener {
 
 		extentReports = new ExtentReports();
 		ExtentSparkReporter reporter = new ExtentSparkReporter(OUTPUT_FOLDER + FILE_NAME);
-		reporter.config().setReportName("Exposure Hub Automation Report");
+		reporter.config().setReportName("Exposure Hub Automation Test Report");
 		extentReports.attachReporter(reporter);
 		extentReports.setSystemInfo("System", "Window");
 		extentReports.setSystemInfo("Author", "Pankaj Yadav");

@@ -31,7 +31,7 @@ public class ExtentManager {
 		ExtentSparkReporter htmlReporter = new ExtentSparkReporter(fileName);
 		htmlReporter.config().setDocumentTitle(fileName);
 		//htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
-		htmlReporter.config().setReportName("Exposure Hub Automation Report");
+		htmlReporter.config().setReportName("Exposure Hub Automation Test Report");
 		htmlReporter.config().setTheme(Theme.STANDARD);
 		//htmlReporter.config().setChartVisibilityOnOpen(true);
 		
