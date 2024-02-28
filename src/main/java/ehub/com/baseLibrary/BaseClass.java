@@ -27,6 +27,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
 import ehub.com.constants.AppConstants;
+import ehub.com.listeners.ExtentReportListener;
 import ehub.com.utils.ExcelUtil;
 import ehub.com.utils.ExtentManager;
 import ehub.com.utils.PropertyUtility;
@@ -44,13 +45,19 @@ public class BaseClass {
 
 	@BeforeSuite
 	public void beforeSuite() {
-		extent = ExtentManager.getInstance();
-		TestUtility.setdateForLog4j();
+		if (PropertyUtility.getProperty("createExtentReportDateAndTimeWiseYesOrNo").equalsIgnoreCase("yes")) {
+			extent = ExtentManager.getInstance();
+		}
+		if (PropertyUtility.getProperty("createLogReportStatusYesOrNo").equalsIgnoreCase("yes")) {
+			TestUtility.setdateForLog4j();			
+		}	
 	}
 
 	@BeforeTest
 	public void beforeTest() {
-		test = extent.createTest(getClass().getName());
+		if (PropertyUtility.getProperty("createExtentReportDateAndTimeWiseYesOrNo").equalsIgnoreCase("yes")) {
+			test = extent.createTest(getClass().getName());
+		}
 	}
 
 	public void initilization() {
@@ -95,33 +102,48 @@ public class BaseClass {
 	@BeforeMethod
 	public void beforeMethod(ITestResult result) {
 		log.info(result.getMethod().getMethodName() + " test is Started");
-		test.log(Status.INFO, result.getMethod().getMethodName() + " test is Started");
+
+		if (PropertyUtility.getProperty("createExtentReportDateAndTimeWiseYesOrNo").equalsIgnoreCase("yes")) {
+			test.log(Status.INFO, result.getMethod().getMethodName() + " test is Started");
+		}
+
 	}
 
 	@AfterMethod
 	public void afterMethod(ITestResult result) throws IOException {
-		if (result.getStatus() == ITestResult.FAILURE) {
-			log.info(result.getName() + " test is Failed" + result.getThrowable());
-			test.log(Status.FAIL, result.getName() + " test is Failed" + result.getThrowable());
-			// String imagePath = getScreenShots(result.getName());
-			// test.addScreenCaptureFromPath(imagePath);
-			test.fail(result.getThrowable(), MediaEntityBuilder
-					.createScreenCaptureFromPath(getScreenShots(result.getMethod().getMethodName())).build());
-		} else if (result.getStatus() == ITestResult.SUCCESS) {
-			log.info(result.getName() + " test is pass");
-			test.log(Status.PASS, result.getName() + " is Pass");
+		if (PropertyUtility.getProperty("createExtentReportDateAndTimeWiseYesOrNo").equalsIgnoreCase("yes")) {
 
-		} else if (result.getStatus() == ITestResult.SKIP) {
-			log.info(result.getName() + " test is skip" + result.getThrowable());
-			test.log(Status.SKIP, result.getName() + " test is Skip" + result.getThrowable());
+			if (result.getStatus() == ITestResult.FAILURE) {
+				log.info(result.getName() + " test is Failed" + result.getThrowable());
+				test.log(Status.FAIL, result.getName() + " test is Failed" + result.getThrowable());
+				// String imagePath = getScreenShots(result.getName());
+				// test.addScreenCaptureFromPath(imagePath);
+				test.fail(result.getThrowable(), MediaEntityBuilder
+						.createScreenCaptureFromPath(getScreenShots(result.getMethod().getMethodName())).build());
+			} else if (result.getStatus() == ITestResult.SUCCESS) {
+				log.info(result.getName() + " test is pass");
+				test.log(Status.PASS, result.getName() + " is Pass");
+
+			} else if (result.getStatus() == ITestResult.SKIP) {
+				log.info(result.getName() + " test is skip" + result.getThrowable());
+				test.log(Status.SKIP, result.getName() + " test is Skip" + result.getThrowable());
+			}
+			log.info(result.getName() + " - is Finished.");
+			test.log(Status.INFO, result.getName() + " - is Finished.");
+			extent.flush();
 		}
-		log.info(result.getName() + " - is Finished.");
-		test.log(Status.INFO, result.getName() + " - is Finished.");
-		extent.flush();
 	}
 
 	public static void logExtentReport(String msg) {
-		test.log(Status.INFO, msg);
+		if (PropertyUtility.getProperty("showInputDataAndActionInExtentReportDateAndTimeWiseYesOrNo")
+				.equalsIgnoreCase("yes")
+				&& PropertyUtility.getProperty("createExtentReportDateAndTimeWiseYesOrNo")
+						.equalsIgnoreCase("yes")) {
+			test.log(Status.INFO, msg);
+		}
+		if (PropertyUtility.getProperty("showInputDataAndActionInTestExecutionReportYesOrNo").equalsIgnoreCase("yes")) {
+			ExtentReportListener.logExtentReport(msg);
+		}
 	}
 
 	public static String getScreenShots(String imageName) {

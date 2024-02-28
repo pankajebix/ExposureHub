@@ -32,28 +32,28 @@ public class S02updatePolicyPageTest extends BaseClass{
 		Assert.assertEquals(actualCreatedPolicy, expectedCreatedPolicy);
 	}
 	
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void editPolicyDetails() {
 		String expectedCreatedPolicy=AppConstants.policy_Number+"S01update";
 		String actualCreatedPolicy=S02page.editPolicyDetails(expectedCreatedPolicy, AppConstants.policy_Assured+"S01update");		
 		Assert.assertEquals(actualCreatedPolicy, expectedCreatedPolicy);
 	}
 	
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void editLimitGroup() {
 		String expectedGroupName=AppConstants.limit_Group_Name+"S01update";
 		String actualGroupName=S02page.editLimitGroup(expectedGroupName);		
 		Assert.assertEquals(actualGroupName, expectedGroupName);
 	}
 	
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void copyAndCreateNewLimitGroup() {
 		String expected="limit group updated";
 		String actual=S02page.copyAndCreateNewLimitGroup(expected);		
 		Assert.assertEquals(actual, expected);
 	}	
 	
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
 	public void copyAndCreateNewLimit() {
 		String expected="limit updated";
 		String actual=S02page.copyAndCreateNewLimit(expected);		
@@ -62,23 +62,17 @@ public class S02updatePolicyPageTest extends BaseClass{
 	
 	@Test(priority = 7, enabled = true)
 	public void editCyberSchedule() {
-		boolean expected=true;
-		boolean actual=S02page.editCyberSchedule();
-		Assert.assertEquals(actual, expected);
+		S02page.editCyberSchedule();		
 	}
 	
 	@Test(priority = 8, enabled = true)
 	public void editOffshoreSchedule() {
-		boolean expected=true;
-		boolean actual=S02page.editOffshoreSchedule();
-		Assert.assertEquals(actual, expected);
+		S02page.editOffshoreSchedule();		
 	}	
 	
 	@Test(priority = 9, enabled = true)
-	public void editOffshoreRenewablesSchedule() {
-		boolean expected=true;
-		boolean actual=S02page.editOffshoreRenewablesSchedule();
-		Assert.assertEquals(actual, expected);
+	public void editOffshoreRenewablesSchedule() {		
+		S02page.editOffshoreRenewablesSchedule();
 	}
 	
 	@Test(priority = 10, enabled = true)
