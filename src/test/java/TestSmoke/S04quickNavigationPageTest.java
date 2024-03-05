@@ -4,19 +4,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S04quickNavigationPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S04quickNavigationPageTest extends BaseClass{
+public class S04quickNavigationPageTest extends BaseTest{
 	
 	S04quickNavigationPage S04page;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S04page = new S04quickNavigationPage(driver);
 	}
 

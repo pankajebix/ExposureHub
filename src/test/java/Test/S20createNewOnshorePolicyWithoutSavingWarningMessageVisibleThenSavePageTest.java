@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S20createNewOnshorePolicyWithoutSavingWarningMessageVisibleThenSavePage;
 
-public class S20createNewOnshorePolicyWithoutSavingWarningMessageVisibleThenSavePageTest extends BaseClass{	
+public class S20createNewOnshorePolicyWithoutSavingWarningMessageVisibleThenSavePageTest extends BaseTest{	
 	
 	S20createNewOnshorePolicyWithoutSavingWarningMessageVisibleThenSavePage S20page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S20page = new S20createNewOnshorePolicyWithoutSavingWarningMessageVisibleThenSavePage(driver);
 	}
 

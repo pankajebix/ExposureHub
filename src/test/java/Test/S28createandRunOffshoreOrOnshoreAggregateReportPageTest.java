@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S28createandRunOffshoreOrOnshoreAggregateReportPage;
 
 
-public class S28createandRunOffshoreOrOnshoreAggregateReportPageTest extends BaseClass{
+public class S28createandRunOffshoreOrOnshoreAggregateReportPageTest extends BaseTest{
 	
 	S28createandRunOffshoreOrOnshoreAggregateReportPage S28page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S28page = new S28createandRunOffshoreOrOnshoreAggregateReportPage(driver);
 	}
 

@@ -3,17 +3,17 @@ package Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.CommonLocatorsAndMethod;
 
-public class DeleteAllPolicyPageTest extends BaseClass {
+public class DeleteAllPolicyPageTest extends BaseTest {
 
 	CommonLocatorsAndMethod common;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		common = new CommonLocatorsAndMethod(driver);
 	}
 

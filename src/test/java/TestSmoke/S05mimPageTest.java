@@ -4,19 +4,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S05mimPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S05mimPageTest extends BaseClass{
+public class S05mimPageTest extends BaseTest{
 	
 	S05mimPage S05page;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S05page = new S05mimPage(driver);
 	}
 

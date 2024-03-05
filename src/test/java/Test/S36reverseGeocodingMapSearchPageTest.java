@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S36reverseGeocodingMapSearchPage;
 
 
-public class S36reverseGeocodingMapSearchPageTest extends BaseClass{	
+public class S36reverseGeocodingMapSearchPageTest extends BaseTest{	
 	
 	S36reverseGeocodingMapSearchPage S36page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S36page = new S36reverseGeocodingMapSearchPage(driver);
 	}
 

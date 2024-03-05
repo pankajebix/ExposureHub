@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S07importOffshoreSchedulesPage;
 
-public class S07importOffshoreSchedulesPageTest extends BaseClass{
+public class S07importOffshoreSchedulesPageTest extends BaseTest{
 	
 	S07importOffshoreSchedulesPage S07page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S07page = new S07importOffshoreSchedulesPage(driver);
 	}
 

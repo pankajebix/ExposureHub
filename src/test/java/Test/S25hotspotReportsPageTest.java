@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S25hotspotReportsPage;
 
 
-public class S25hotspotReportsPageTest extends BaseClass{	
+public class S25hotspotReportsPageTest extends BaseTest{	
 	
 	S25hotspotReportsPage S25page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S25page = new S25hotspotReportsPage(driver);
 	}
 

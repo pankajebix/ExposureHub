@@ -3,18 +3,17 @@ package Test;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S02createNewPolicyWithTermsPage;
 
-public class S02createNewPolicyWithTermsPageTest extends BaseClass{
+public class S02createNewPolicyWithTermsPageTest extends BaseTest{
 	
 	S02createNewPolicyWithTermsPage S02page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S02page = new S02createNewPolicyWithTermsPage(driver);
 	}
 

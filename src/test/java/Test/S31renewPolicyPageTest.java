@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S31renewPolicyPage;
 
-public class S31renewPolicyPageTest extends BaseClass{	
+public class S31renewPolicyPageTest extends BaseTest{	
 	
 	S31renewPolicyPage S31page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S31page = new S31renewPolicyPage(driver);
 	}
 

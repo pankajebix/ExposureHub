@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S33bulkEditReviewTheChangesAndSaveOnshorePage;
 
-public class S33bulkEditReviewTheChangesAndSaveOnshorePageTest extends BaseClass{	
+public class S33bulkEditReviewTheChangesAndSaveOnshorePageTest extends BaseTest{	
 	
 	S33bulkEditReviewTheChangesAndSaveOnshorePage S33page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S33page = new S33bulkEditReviewTheChangesAndSaveOnshorePage(driver);
 	}
 

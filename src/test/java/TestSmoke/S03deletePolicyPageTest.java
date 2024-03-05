@@ -4,19 +4,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S03deletePolicyPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S03deletePolicyPageTest extends BaseClass{
+public class S03deletePolicyPageTest extends BaseTest{
 	
 	S03deletePolicyPage S03page;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S03page = new S03deletePolicyPage(driver);
 	}
 
@@ -57,14 +57,12 @@ public class S03deletePolicyPageTest extends BaseClass{
 		Assert.assertEquals(actual, message);
 	}
 	
-	
 	@Test(priority = 7, enabled = true)
 	public void deleteScheduleOffshoreRenewables() {
 		String message="offshore renewables schedule deleted";
 		String actual=S03page.deleteScheduleOffshoreRenewables(message);
 		Assert.assertEquals(actual, message);
 	}
-	
 	
 	@Test(priority = 8, enabled = true)
 	public void deletePolicy() {

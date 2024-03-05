@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S09createNewOffshorePolicyWithTermsCoverageRulesAndAdd10ScheduleAndDeleteItemsPage;
 
-public class S09createNewOffshorePolicyWithTermsCoverageRulesAndAdd10ScheduleAndDeleteItemsPageTest extends BaseClass{
+public class S09createNewOffshorePolicyWithTermsCoverageRulesAndAdd10ScheduleAndDeleteItemsPageTest extends BaseTest{
 	
 	
 	S09createNewOffshorePolicyWithTermsCoverageRulesAndAdd10ScheduleAndDeleteItemsPage S09page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S09page = new S09createNewOffshorePolicyWithTermsCoverageRulesAndAdd10ScheduleAndDeleteItemsPage(driver);
 	}
 

@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S11createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPage;
 
 
-public class S11createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPageTest extends BaseClass{	
+public class S11createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPageTest extends BaseTest{	
 
 	S11createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPage S11page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S11page = new S11createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPage(driver);
 	}
 

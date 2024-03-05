@@ -3,19 +3,19 @@ package Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.GetClassPerilsCoveragesEntity;
 import ehub.com.utils.ExcelUtil;
 
-public class GetClassPerilsCoveragesEntityTest extends BaseClass{
+public class GetClassPerilsCoveragesEntityTest extends BaseTest{
 	
 	GetClassPerilsCoveragesEntity getclassPage;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		getclassPage = new GetClassPerilsCoveragesEntity(driver);
 	}
 

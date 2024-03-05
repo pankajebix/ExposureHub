@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S30copyPolicyPage;
 
-public class S30copyPolicyPageTest extends BaseClass{
+public class S30copyPolicyPageTest extends BaseTest{
 	
 	S30copyPolicyPage S30page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S30page = new S30copyPolicyPage(driver);
 	}
 

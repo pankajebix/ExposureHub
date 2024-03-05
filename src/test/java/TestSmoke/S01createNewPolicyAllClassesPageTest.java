@@ -4,12 +4,12 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S01createNewPolicyAllClassesPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S01createNewPolicyAllClassesPageTest extends BaseClass{
+public class S01createNewPolicyAllClassesPageTest extends BaseTest{
 	
 	 
 	S01createNewPolicyAllClassesPage S01page;
@@ -17,7 +17,7 @@ public class S01createNewPolicyAllClassesPageTest extends BaseClass{
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S01page = new S01createNewPolicyAllClassesPage(driver);
 	}
 

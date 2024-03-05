@@ -436,6 +436,7 @@ public class CommonLocatorsAndMethod {
 			}
 
 			eleUtil.clickTab();
+			Thread.sleep(2000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(PerilsField, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -475,7 +476,7 @@ public class CommonLocatorsAndMethod {
 			PolicyNavigationImage.click();
 			log.info("Clicked on Policy Navigation Link");
 
-			eleUtil.waitForElementVisible(verifyCreatedPolicy, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
+			eleUtil.waitForElementVisible(verifyCreatedPolicy, AppConstants.DEFAULT_LONG_TIME_OUT);
 
 			createdPolicyVerify = verifyCreatedPolicy.getText();
 			Thread.sleep(1000);
@@ -494,13 +495,11 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(HomePage_PolicyLinkButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			HomePage_PolicyLinkButton.click();
 			log.info("Clicked on Policy");
-			// Thread.sleep(5000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(PolicyPlus_Button, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			PolicyPlus_Button.click();
 			log.info("Clicked on Add Policy");
-			// Thread.sleep(5000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(PolicyNavigationImage, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -510,13 +509,12 @@ public class CommonLocatorsAndMethod {
 
 			ClickOn_Entity.click();
 			log.info("Clicked on Entity Grid");
-			// Thread.sleep(2000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(SelectEntity, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			SelectEntity.click();
 			log.info("Select Entity");
-			// Thread.sleep(2000);
+	
 			eleUtil.waitForElementVisibleAndToBeClickable(classField, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			classField.click();
@@ -527,7 +525,7 @@ public class CommonLocatorsAndMethod {
 				String className[] = classNameWithCommaSeprated.split(",");
 				WebElement classNameValue = driver
 						.findElement(By.xpath("//span[text()='" + " " + className[i] + " " + "']"));
-				// Thread.sleep(1000);
+				
 				eleUtil.waitForElementVisibleAndToBeClickable(classNameValue, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 				jsUtil.clickElementByJS(classNameValue);
@@ -536,11 +534,11 @@ public class CommonLocatorsAndMethod {
 			}
 
 			eleUtil.clickTab();
-			// Thread.sleep(3000);
+			Thread.sleep(2000);
 			eleUtil.waitForElementVisibleAndToBeClickable(PerilsField, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			jsUtil.clickElementByJS(PerilsField);
-			// Thread.sleep(1000);
+			
 			log.info("Clicked on Perils Grid");
 
 			eleUtil.clickTab();
@@ -1810,10 +1808,9 @@ public class CommonLocatorsAndMethod {
 
 				eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_LONG_TIME_OUT, 2, rowActionGeneric);
 				eleUtil.waitForElementVisibleAndToBeClickable(rowActionGeneric, AppConstants.DEFAULT_LONG_TIME_OUT);
-				// rowActionGeneric.click();
+				
 				jsUtil.clickElementByJS(rowActionGeneric);
 				log.info("Clicked on Row Action");
-				// Thread.sleep(1000);
 
 				eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_LONG_TIME_OUT, 2,
 						rowActionDeleteButton);
@@ -1840,6 +1837,7 @@ public class CommonLocatorsAndMethod {
 //			Thread.sleep(1000);
 			
 			WebElement pagerRowSizeAfter=driver.findElement(By.xpath("//div[@class='class-icon-set-margin class-icon']/span[text()='"+classNameXpath+"']/ancestor::div[@class='schedule-grid ng-star-inserted']/expansion-panel/mat-expansion-panel/div/div/div/div/app-schedules/div/div/div/app-paginator/div[@class='pager-submodules']/p"));
+			eleUtil.waitForElementVisible(pagerRowSizeAfter, AppConstants.DEFAULT_LONG_TIME_OUT);
 			eleUtil.waitForElementVisible(pagerRowSizeAfter, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.scrollIntoViewTrue(pagerRowSizeAfter);
 			eleUtil.waitForElementVisible(pagerRowSizeAfter, AppConstants.DEFAULT_LONG_TIME_OUT);
@@ -3185,9 +3183,9 @@ public class CommonLocatorsAndMethod {
 			reportNameInputBox.sendKeys(reportName);
 			
 			log.info("Enter Report Name : "+reportName);
-			Thread.sleep(1000);
+			Thread.sleep(5000);
 			
-			eleUtil.waitForElementVisible(searchedReportData, AppConstants.DEFAULT_LONG_TIME_OUT);
+			eleUtil.waitForElementVisible(searchedReportData, AppConstants.DEFAULT_VERY_LONG_TIME_OUT);
 			verifySearchedReport = searchedReportData.getText();
 			Thread.sleep(1000);
 			log.info("Verify Searched Report Data");

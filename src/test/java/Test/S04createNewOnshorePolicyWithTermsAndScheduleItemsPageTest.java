@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S04createNewOnshorePolicyWithTermsAndScheduleItemsPage;
 
 
-public class S04createNewOnshorePolicyWithTermsAndScheduleItemsPageTest extends BaseClass{
+public class S04createNewOnshorePolicyWithTermsAndScheduleItemsPageTest extends BaseTest{
 	
 	S04createNewOnshorePolicyWithTermsAndScheduleItemsPage S04page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S04page = new S04createNewOnshorePolicyWithTermsAndScheduleItemsPage(driver);
 	}
 

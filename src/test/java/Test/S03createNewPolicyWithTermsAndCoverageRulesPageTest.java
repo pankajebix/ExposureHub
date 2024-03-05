@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S03createNewPolicyWithTermsAndCoverageRulesPage;
 
-public class S03createNewPolicyWithTermsAndCoverageRulesPageTest extends BaseClass{
+public class S03createNewPolicyWithTermsAndCoverageRulesPageTest extends BaseTest{
 	
 	S03createNewPolicyWithTermsAndCoverageRulesPage S03page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S03page = new S03createNewPolicyWithTermsAndCoverageRulesPage(driver);
 	}
 

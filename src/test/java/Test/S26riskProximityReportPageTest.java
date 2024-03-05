@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S26riskProximityReportPage;
 
 
-public class S26riskProximityReportPageTest extends BaseClass{	
+public class S26riskProximityReportPageTest extends BaseTest{	
 	
 	S26riskProximityReportPage S26page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S26page = new S26riskProximityReportPage(driver);
 	}
 

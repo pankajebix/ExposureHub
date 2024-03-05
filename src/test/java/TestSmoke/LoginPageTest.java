@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.LoginPage;
 
-public class LoginPageTest extends BaseClass{
+public class LoginPageTest extends BaseTest{
 	
 	LoginPage loginPage;
 	
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		loginPage = new LoginPage(driver);
 	}
 	

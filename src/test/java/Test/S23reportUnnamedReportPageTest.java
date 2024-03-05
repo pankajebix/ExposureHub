@@ -4,17 +4,17 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.pages.S23reportUnnamedReportPage;
 
 
-public class S23reportUnnamedReportPageTest extends BaseClass{	
+public class S23reportUnnamedReportPageTest extends BaseTest{	
 	
 	S23reportUnnamedReportPage S23page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S23page = new S23reportUnnamedReportPage(driver);
 	}
 

@@ -4,18 +4,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S27createAndRunShapeReportPage;
 
 
-public class S27createAndRunShapeReportPageTest extends BaseClass{
+public class S27createAndRunShapeReportPageTest extends BaseTest{
 	
 	S27createAndRunShapeReportPage S27page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S27page = new S27createAndRunShapeReportPage(driver);
 	}
 

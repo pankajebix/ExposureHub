@@ -3,18 +3,18 @@ package Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.S19createNewOnshorePolicyWithoutSavingWarningMessageVisiblePage;
 
 
-public class S19createNewOnshorePolicyWithoutSavingWarningMessageVisiblePageTest extends BaseClass{
+public class S19createNewOnshorePolicyWithoutSavingWarningMessageVisiblePageTest extends BaseTest{
 	
 	S19createNewOnshorePolicyWithoutSavingWarningMessageVisiblePage S19page;
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S19page = new S19createNewOnshorePolicyWithoutSavingWarningMessageVisiblePage(driver);
 	}
 

@@ -4,19 +4,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S02updatePolicyPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S02updatePolicyPageTest extends BaseClass{
+public class S02updatePolicyPageTest extends BaseTest{
 	
 	S02updatePolicyPage S02page;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S02page = new S02updatePolicyPage(driver);
 	}
 
@@ -32,28 +32,28 @@ public class S02updatePolicyPageTest extends BaseClass{
 		Assert.assertEquals(actualCreatedPolicy, expectedCreatedPolicy);
 	}
 	
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true)
 	public void editPolicyDetails() {
 		String expectedCreatedPolicy=AppConstants.policy_Number+"S01update";
 		String actualCreatedPolicy=S02page.editPolicyDetails(expectedCreatedPolicy, AppConstants.policy_Assured+"S01update");		
 		Assert.assertEquals(actualCreatedPolicy, expectedCreatedPolicy);
 	}
 	
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void editLimitGroup() {
 		String expectedGroupName=AppConstants.limit_Group_Name+"S01update";
 		String actualGroupName=S02page.editLimitGroup(expectedGroupName);		
 		Assert.assertEquals(actualGroupName, expectedGroupName);
 	}
 	
-	@Test(priority = 5, enabled = false)
+	@Test(priority = 5, enabled = true)
 	public void copyAndCreateNewLimitGroup() {
 		String expected="limit group updated";
 		String actual=S02page.copyAndCreateNewLimitGroup(expected);		
 		Assert.assertEquals(actual, expected);
 	}	
 	
-	@Test(priority = 6, enabled = false)
+	@Test(priority = 6, enabled = true)
 	public void copyAndCreateNewLimit() {
 		String expected="limit updated";
 		String actual=S02page.copyAndCreateNewLimit(expected);		

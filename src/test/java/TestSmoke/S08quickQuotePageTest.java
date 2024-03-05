@@ -4,13 +4,13 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import ehub.com.baseLibrary.BaseClass;
+import base.BaseTest;
 import ehub.com.constants.AppConstants;
 import ehub.com.pages.CommonLocatorsAndMethod;
 import ehub.com.pagesSmoke.S08quickQuotePage;
 import ehub.com.utils.ExcelUtil;
 
-public class S08quickQuotePageTest extends BaseClass{
+public class S08quickQuotePageTest extends BaseTest{
 	
 	S08quickQuotePage S08page;
 	CommonLocatorsAndMethod common;
@@ -18,7 +18,7 @@ public class S08quickQuotePageTest extends BaseClass{
 
 	@BeforeTest
 	public void setupBrowser() {
-		initilization();
+		setup();
 		S08page = new S08quickQuotePage(driver);
 		common = new CommonLocatorsAndMethod(driver);
 	}

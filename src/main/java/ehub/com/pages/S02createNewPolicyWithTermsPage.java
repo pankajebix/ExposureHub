@@ -20,7 +20,7 @@ public class S02createNewPolicyWithTermsPage {
 	}
 
 	public String createNewPolicy(String policyNumber) {
-		 String createdPolicyVerify =common.createNewPolicyWithClassName(policyNumber, AppConstants.policy_Assured + "01", 2, AppConstants.className_two_class_With_Different_Name);
+		 String createdPolicyVerify =common.createNewPolicyWithClassName(policyNumber, AppConstants.policy_Assured + "02", 2, AppConstants.className_two_class_With_Different_Name);
 		return createdPolicyVerify;
 	}
 	
