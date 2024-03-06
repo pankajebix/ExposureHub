@@ -11,6 +11,7 @@
 		<selenium-version>4.18.1</selenium-version>
 		<testNG-version>7.9.0</testNG-version>
 		<extent-reports-version>5.1.1</extent-reports-version>
+		<aspectj-version>1.9.5</aspectj-version>
 	</properties>
 
 	<dependencies>
@@ -75,6 +76,14 @@
 			<version>${extent-reports-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj-version}</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -101,6 +110,10 @@
 						<!-- TestNG suite XML files -->
 						<suiteXmlFile>src/test/resources/testrunner/testNGSmoke.xml</suiteXmlFile>
 					</suiteXmlFiles>
+
+					<argLine>
+						-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+					</argLine>
 
 				</configuration>
 			</plugin>
