@@ -388,6 +388,12 @@ public class CommonLocatorsAndMethod {
 	@FindBy(xpath = "(//div[@class='import-policy-title']/span)[1]")
 	public WebElement quickQuoteAutomaticPolicyNumberEle;
 	
+	@FindBy(xpath = "(//div[@class='schedule-upload']/mat-toolbar-top/button)[1]/span[@class='mat-button-wrapper']")
+	public WebElement precessedCount;
+	
+	@FindBy(xpath = "//span[contains(.,'refresh Refresh')]")
+	public WebElement refreshButtonOnlyOnePlaceUse;
+	
 	public void login(String userName, String password) {
 		loginPage.doLogin(userName, password);
 	}
@@ -2741,13 +2747,32 @@ public class CommonLocatorsAndMethod {
 			ImportButton2.click();
 			log.info("Clicked on Import");
 
-			Thread.sleep(59000);
-			
-			WebElement RefreshButtonClick = driver.findElement(By.xpath("//span[contains(.,'refresh Refresh')]"));
-			RefreshButtonClick.click();
-			log.info("Clicked on Refresh");
 			Thread.sleep(5000);
-
+			int after=0;
+			int before=0;
+			
+			do {
+				eleUtil.waitForElementVisibleAndToBeClickable(refreshButtonOnlyOnePlaceUse, AppConstants.DEFAULT_VERY_LONG_TIME_OUT);
+				
+				jsUtil.clickElementByJS(refreshButtonOnlyOnePlaceUse);
+				log.info("Clicked on Refresh");
+				Thread.sleep(10000);
+				
+				eleUtil.waitForElementVisible(precessedCount, AppConstants.DEFAULT_VERY_LONG_TIME_OUT);
+				String textName=precessedCount.getText().trim().substring(21);
+				
+				String textNameIndexWise[]=textName.trim().split("/");				
+				String textNameIndexZero=textNameIndexWise[0].trim();
+				
+				String finalIndexOne=textNameIndexWise[1].trim();
+				after=Integer.parseInt(finalIndexOne);
+				
+				int a2=textNameIndexZero.length();	
+				String finalIndexZero=textNameIndexZero.substring(10, a2);
+				before=Integer.parseInt(finalIndexZero);
+				
+			} while (after>before);
+			
 			WebElement ClickOnFinish = driver.findElement(By.xpath("//span[@class='mat-button-wrapper'][contains(.,'done Finish')]"));
 			eleUtil.waitForElementVisibleAndToBeClickable(ClickOnFinish, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(ClickOnFinish);

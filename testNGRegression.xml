@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Exposure Hub Regression" verbose="4" parallel="tests" thread-count="3">
+	
+	<listeners>
+		<listener
+			class-name="ehub.com.listeners.ExtentReportListener" />
+	</listeners>
+	
+	<test name="Login Page" enabled="true">
+
+		<classes>
+			<class name="Test.LoginPageTest"></class>
+		</classes>
+	</test>
+
+	<test
+		name="Scenario #01 : Create New Policy"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S01createNewPolicyPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #02 : Create new policy with terms"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S02createNewPolicyWithTermsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #03 : Create new policy with terms and Coverage rules"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S03createNewPolicyWithTermsAndCoverageRulesPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #04 : Create new Onshore policy with terms and schedule items"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S04createNewOnshorePolicyWithTermsAndScheduleItemsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #05 : Create new Offshore policy with terms and schedule items"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S05createNewOffshorePolicyWithTermsAndScheduleItemsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #06 : Create new Onshore policy with terms, coverage rules and 1 schedule item and delete schedule item"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S06createNewOnshorePolicyWithTermsAndScheduleAndDeleteItemsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #07 : Create new Offshore policy with terms, coverage rules and 1 schedule item and delete schedule item"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S07createNewOffshorePolicyWithTermsAndScheduleAndDeleteItemsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #08 : Create new Onshore policy with terms, coverage rules and 10 schedule items and delete a schedule item"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S08createNewOnshorePolicyWithTermsCoverageRulesAndAdd10ScheduleAndDeleteItemsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #09 : Create new Offshore policy with terms, coverage rules and 10 schedule items and delete a schedule item"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S09createNewOffshorePolicyWithTermsCoverageRulesAndAdd10ScheduleAndDeleteItemsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #10 : Create new Onshore policy with terms and 100 / 1000 schedule items (Import) geocoding on"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S10createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOnPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #11 : Create new Onshore policy with terms and 100 schedule items (Import) geocoding off"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S11createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #12 : Create Onshore policy with terms and 100 / 1000 schedule items (Import) geocoding off"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S12createNewOnshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #13 : Create new Offshore policy with terms and 100 schedule items (Import) geocoding off"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S13createNewOffshorePolicyWithTermsAndImportSchedule100Or1000GeocodingOffPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #14 : Create Onshore policy with terms 10,000 schedule items  (Import) geocoding off"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S14createNewOnshorePolicyWithTermsAndImportSchedule10000GeocodingOffPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #15 : Create Onshore policy with terms 10,000 schedule items  (Import) geocoding on"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S15createNewOnshorePolicyWithTermsAndImportSchedule10000GeocodingOnPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #16 : Create Onshore policy with coverage rules and schedule items (Import) geocoding off"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S16createOnshorePolicyWithCoverageRulesAndScheduleItemsGeocodingOffPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #17 : Create new Onshore policy with term, Coverage rules and 1,000 schedule items (Import) geocoding off"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S17createNewOnshorePolicyWithTermCoverageRulesImportSchedule1000GeocodingOffPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #18 : Create new Offshore policy with term, Coverage and 1,000 schedule items (Import) geocoding off"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S18createNewOffshorePolicyWithTermCoverageRulesImportSchedule1000GeocodingOffPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #19 : Create a new policy without saving, warning message visible"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S19createNewOnshorePolicyWithoutSavingWarningMessageVisiblePageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #20 : Create a new policy without saving, warning message visible then save"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S20createNewOnshorePolicyWithoutSavingWarningMessageVisibleThenSavePageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #22 : Create and run a hurricane report (report named)"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S22createAndRunAHurricaneReportPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #23 : Report (Unnamed Report)"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S23reportUnnamedReportPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #24 : Reports"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S24reportsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #25 : Hotspot reports"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S25hotspotReportsPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #26 : Risk proximity report"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S26riskProximityReportPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #27 : Create and run a shape report"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S27createAndRunShapeReportPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #28 : Create and run an offshore / onshore aggregate report"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S28createandRunOffshoreOrOnshoreAggregateReportPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #29 : Edit Report, Run and delete"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S29editReportRunAndDeletePageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #30 : Copy a policy"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S30copyPolicyPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #31 : Renew a policy"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S31renewPolicyPageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #33 : Bulk edit, review the changes and save (onshore)"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S33bulkEditReviewTheChangesAndSaveOnshorePageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #34 : Bulk edit, review the changes and save (offshore)"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S34bulkEditReviewTheChangesAndSaveOffshorePageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #35 : Create a new policy, add 100 schedule items, bulk edit (onshore)"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S35createNewPolicyAddSchedule100BulkEditOnshorePageTest"></class>
+		</classes>
+	</test>
+	
+	<test
+		name="Scenario #36 : Reverse Geocoding - Map Search"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.S36reverseGeocodingMapSearchPageTest"></class>
+		</classes>
+	</test>
+	
+	
+</suite>
+

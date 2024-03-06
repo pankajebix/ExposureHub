@@ -78,15 +78,18 @@ public class BaseClass {
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
-			driver = new FirefoxDriver();
+			//driver = new FirefoxDriver();
+			tlDriver.set(new FirefoxDriver());
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("ie")) {
-			driver = new InternetExplorerDriver();
+			//driver = new InternetExplorerDriver();
+			tlDriver.set(new InternetExplorerDriver());
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("edge")) {
-			driver = new EdgeDriver();
+			//driver = new EdgeDriver();
+			tlDriver.set(new EdgeDriver());
 			log.info(browserName + " : is launched successfully");
 		} else {
 			System.out.println("Kindly pass the right browser name.");

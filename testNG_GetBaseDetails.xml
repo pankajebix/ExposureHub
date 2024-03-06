@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Exposure Hub" verbose="4">
+
+	<test
+		name="Get Class , Perils, Coverages details"
+		enabled="true">
+
+		<classes>
+			<class
+				name="Test.GetClassPerilsCoveragesEntityTest"></class>
+		</classes>
+	</test>
+
+</suite>

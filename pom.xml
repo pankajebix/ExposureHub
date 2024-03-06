@@ -99,7 +99,7 @@
 				<configuration>
 					<suiteXmlFiles>
 						<!-- TestNG suite XML files -->
-						<suiteXmlFile>testNGSmoke.xml</suiteXmlFile>
+						<suiteXmlFile>src/test/resources/testrunner/testNGSmoke.xml</suiteXmlFile>
 					</suiteXmlFiles>
 
 				</configuration>
