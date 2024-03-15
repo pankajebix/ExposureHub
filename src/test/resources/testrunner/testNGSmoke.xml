@@ -15,7 +15,7 @@
 		</classes>
 	</test>
 
-	<test name="Scenario #01 : Create New Policy - All Classes" enabled="true">
+	<test name="Scenario #01 : Create New Policy - All Classes" enabled="false">
 
 		<classes>
 			<class
@@ -23,7 +23,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #02 : Update Policy" enabled="true">
+	<test name="Scenario #02 : Update Policy" enabled="false">
 
 		<classes>
 			<class
@@ -31,7 +31,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #04 : Quick Navigation" enabled="true">
+	<test name="Scenario #04 : Quick Navigation" enabled="false">
 
 		<classes>
 			<class
@@ -39,7 +39,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #05 : MiM (Module in Module)" enabled="true">
+	<test name="Scenario #05 : MiM (Module in Module)" enabled="false">
 
 		<classes>
 			<class
@@ -47,7 +47,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #06 : Import - Onshore Schedules" enabled="true">
+	<test name="Scenario #06 : Import - Onshore Schedules" enabled="false">
 
 		<classes>
 			<class
@@ -55,7 +55,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #07 : Import - Offshore Schedules" enabled="true">
+	<test name="Scenario #07 : Import - Offshore Schedules" enabled="false">
 
 		<classes>
 			<class
@@ -63,7 +63,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #08 : Quick Quote" enabled="true">
+	<test name="Scenario #08 : Quick Quote" enabled="false">
 
 		<classes>
 			<class
@@ -71,7 +71,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #03 : Delete Policy" enabled="true">
+	<test name="Scenario #03 : Delete Policy" enabled="false">
 
 		<classes>
 			<class

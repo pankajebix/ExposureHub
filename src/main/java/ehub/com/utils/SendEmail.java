@@ -21,7 +21,7 @@ public class SendEmail {
 		final String username = "pankajyadavebix@gmail.com";
 		final String password = "yldn gptb vidg oehr";
 		String fromEmail = "pankajyadavebix@gmail.com";
-		String toEmail = "suneel.k@ebix.com";
+		String toEmail = "pankaj.yadav@ebix.com";
 
 		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");

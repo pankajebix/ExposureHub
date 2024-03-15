@@ -15,7 +15,7 @@
 		</classes>
 	</test>
 
-	<test name="Scenario #01 : Create New Policy - All Classes" enabled="false">
+	<test name="Scenario #01 : Create New Policy - All Classes" enabled="true">
 
 		<classes>
 			<class

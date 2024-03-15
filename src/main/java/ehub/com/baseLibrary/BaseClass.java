@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.Calendar;
 
 import org.apache.log4j.Logger;
+import org.aspectj.lang.annotation.After;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -31,6 +33,7 @@ import ehub.com.listeners.ExtentReportListener;
 import ehub.com.utils.ExcelUtil;
 import ehub.com.utils.ExtentManager;
 import ehub.com.utils.PropertyUtility;
+import ehub.com.utils.SendEmail;
 import ehub.com.utils.TestUtility;
 
 public class BaseClass {
@@ -215,5 +218,9 @@ public class BaseClass {
 		} catch (Exception e) {
 			System.out.println("Issue in BaseTest.tearDown " + e);
 		}
+	}
+	@AfterSuite
+	public void sendEmail() {
+		SendEmail.main(null);
 	}
 }
