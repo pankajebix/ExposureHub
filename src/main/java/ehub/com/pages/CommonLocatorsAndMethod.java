@@ -318,6 +318,9 @@ public class CommonLocatorsAndMethod {
 
 	@FindBy(xpath = "//div[@role='menu']/div/ul/li[text()='Edit']")
 	public WebElement rowActionEditButton;
+	
+	@FindBy(xpath = "//div[@role='menu']/div/ul/li[text()='Copy Schedule']")
+	public WebElement rowActionCopyScheduleButton;
 
 	@FindBy(xpath = "//div[@role='menu']/div/ul/li[text()='Open']")
 	public WebElement rowActionOpenButton;
@@ -393,6 +396,15 @@ public class CommonLocatorsAndMethod {
 	
 	@FindBy(xpath = "//span[contains(.,'refresh Refresh')]")
 	public WebElement refreshButtonOnlyOnePlaceUse;
+	
+	@FindBy(xpath = "//div[@class='current-import-grid-title']/mat-icon")
+	public WebElement copySchedulePopupFilterButton;
+	
+	@FindBy(xpath = "(//div[@ref='eLabel']/span[text()='Policy Reference'])[2]/../../../../../div[2]/div[7]/div/app-customfloatingfilter/div/div/mat-form-field/div/div/div/input")
+	public WebElement ingridPolicySeachCopySchedule;
+	
+	@FindBy(xpath = "//button/span[text()='Copy ']")
+	public WebElement copyButtonForCopySchedule;
 	
 	public void login(String userName, String password) {
 		loginPage.doLogin(userName, password);
@@ -502,7 +514,7 @@ public class CommonLocatorsAndMethod {
 			HomePage_PolicyLinkButton.click();
 			log.info("Clicked on Policy");
 
-			eleUtil.waitForElementVisibleAndToBeClickable(PolicyPlus_Button, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
+			eleUtil.waitForElementVisibleAndToBeClickable(PolicyPlus_Button, AppConstants.DEFAULT_LONG_TIME_OUT);
 
 			PolicyPlus_Button.click();
 			log.info("Clicked on Add Policy");
@@ -3772,9 +3784,12 @@ public class CommonLocatorsAndMethod {
 
 	}
 
-	public String copyNewPolicyFromPolicyPage(String newPolicyNumber) {
+	public String copyNewPolicyFromPolicyPage(String newPolicyNumber, String scheduleCheckBoxStatusYesOrNo) {
 		String verifyCreatedPolicy=null;
-		try {			
+		try {	
+			eleUtil.waitForElementVisibleAndToBeClickable(hubNavigation, AppConstants.DEFAULT_LONG_TIME_OUT);
+			jsUtil.clickElementByJS(hubNavigation);
+			
 			jsUtil.scrollIntoViewTrue(copyRenewButton);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(copyRenewButton, AppConstants.DEFAULT_SHORT_TIME_OUT);
@@ -3788,7 +3803,19 @@ public class CommonLocatorsAndMethod {
 			EnterNewPolicyReference.clear();
 			EnterNewPolicyReference.sendKeys(newPolicyNumber);
 			log.info("Enter Policy Number : "+newPolicyNumber);
-
+			
+			// check or uncheck schedule check box
+			if(scheduleCheckBoxStatusYesOrNo.equalsIgnoreCase("Yes")) {
+				List<WebElement> scheduleListFromCopyPage=driver.findElements(By.xpath("//div[@class='policy-copy-schedule ng-star-inserted']/div/mat-checkbox"));
+				int size=scheduleListFromCopyPage.size();
+				
+				for(int i=1;i<=size;i++) {
+					WebElement ele=driver.findElement(By.xpath("(//div[@class='policy-copy-schedule ng-star-inserted']/div/mat-checkbox)["+i+"]"));
+					ele.click();
+					log.info("Uncheck the Schedule Check box");
+				}				
+			}			
+			
 			WebElement ClickOnCopy2 = driver.findElement(By.xpath("//span[contains(.,'content_copy Copy')]"));
 			eleUtil.waitForElementVisibleAndToBeClickable(ClickOnCopy2, AppConstants.DEFAULT_SHORT_TIME_OUT);
 			jsUtil.clickElementByJS(ClickOnCopy2);
@@ -3866,6 +3893,7 @@ public class CommonLocatorsAndMethod {
 			jsUtil.clickElementByJS(quickQuotePlus_Button);
 			log.info("Clicked on Quick Quote Button");
 			
+			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_VERY_LONG_TIME_OUT, 2, quickQuoteAutomaticPolicyNumberEle);
 			String quickQuoteAutoPolicy=quickQuoteAutomaticPolicyNumberEle.getText();
 			String s[]=quickQuoteAutoPolicy.split(",");
 			log.info("Auto Generated Policy Number : "+s[0]);
@@ -3907,5 +3935,73 @@ public class CommonLocatorsAndMethod {
 			System.out.println("Issue in Common.quickQuote "+e);
 		}
 		return actualPolicyQuickQuote;
+	}
+	
+	public String copyScheduleFromPolicyPage(String classNameXpath, String ingridSearchPolicyNumberCopySchedule) {
+		String successfulMessage=null;
+		try {			
+			WebElement scheduleNavigationImage = driver.findElement(
+					By.xpath("(//span[@class='material-icons'][contains(.,'" + classNameXpath + "')])[1]"));
+			eleUtil.waitForElementVisibleAndToBeClickable(scheduleNavigationImage, AppConstants.DEFAULT_LONG_TIME_OUT);
+			jsUtil.clickElementByJS(scheduleNavigationImage);
+			log.info("Clicked on Class Navigation");
+			Thread.sleep(2000);
+			
+			WebElement selectAllCheckBox = driver.findElement(
+					By.xpath("//div[@class='class-icon-set-margin class-icon']/span[text()='" + classNameXpath
+							+ "']/ancestor::div[@class='schedule-grid ng-star-inserted']/expansion-panel/mat-expansion-panel/div/div/div/div/app-schedules/div/div/div/ag-grid-angular/div/div/div[@role='grid']/div[@ref='gridHeader']/div[@class='ag-pinned-left-header']/div/div[@col-id='row_selection']/div[@class='ag-labeled ag-label-align-right ag-checkbox ag-input-field ag-header-select-all']/div[@ref='eWrapper']"));
+			eleUtil.waitForElementVisibleAndToBeClickable(selectAllCheckBox, AppConstants.DEFAULT_VERY_LONG_TIME_OUT);
+			
+			selectAllCheckBox.click();
+			Thread.sleep(1000);
+			log.info("Clicked on - Select All Check Box");
+
+			WebElement rowAction = driver.findElement(
+					By.xpath("//div[@class='class-icon-set-margin class-icon']/span[text()='" + classNameXpath + "']/ancestor::div[@class='schedule-grid ng-star-inserted']/expansion-panel/mat-expansion-panel/div/div/div/div/app-schedules/div/div/div/ag-grid-angular/div/div/div[@role='grid']/div[@ref='eBodyViewport']/div[@ref='leftContainer']/div[@row-id='0']/div[@col-id='show_hide_edit']/app-row-actions/button"));
+			Thread.sleep(1000);
+			eleUtil.waitForElementVisibleAndToBeClickable(rowAction, AppConstants.DEFAULT_SHORT_TIME_OUT);
+			rowAction.click();
+			Thread.sleep(1000);
+			log.info("Clicked on Row Action Button");
+
+			rowActionCopyScheduleButton.click();
+			log.info("Clicked on Row Action Copy Schedule");
+			
+			eleUtil.waitForElementVisibleAndToBeClickable(copySchedulePopupFilterButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
+			jsUtil.clickElementByJS(copySchedulePopupFilterButton);
+			log.info("Clicked on Filter Button for Copy Schedule");
+			
+			
+			eleUtil.waitForElementVisibleAndToBeClickable(ingridPolicySeachCopySchedule, AppConstants.DEFAULT_SHORT_TIME_OUT);
+			jsUtil.clickElementByJS(ingridPolicySeachCopySchedule);
+			log.info("Ingrid Seach - Policy Number");
+			ingridPolicySeachCopySchedule.click();
+			ingridPolicySeachCopySchedule.sendKeys(ingridSearchPolicyNumberCopySchedule);
+			log.info("Ingrid Search - Policy Number : "+ingridSearchPolicyNumberCopySchedule);
+			
+			Thread.sleep(8000);
+			WebElement eleCheck=driver.findElement(By.xpath("(//input[@ref='eInput'])[last()]/parent::div"));
+			eleUtil.waitForElementVisibleAndToBeClickable(eleCheck, AppConstants.DEFAULT_LONG_TIME_OUT);
+			eleCheck.click();
+			log.info("Select Policy");
+			
+			jsUtil.clickElementByJS(copyButtonForCopySchedule);
+			log.info("Click on Copy");
+			
+			WebElement popupConfirmationOK=driver.findElement(By.xpath("(//app-alert-dialog/div)[3]/button"));
+			eleUtil.waitForElementVisibleAndToBeClickable(popupConfirmationOK, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
+			
+			WebElement popupConfirmationMessage=driver.findElement(By.xpath("(//app-alert-dialog/div)[2]/p"));
+			successfulMessage=popupConfirmationMessage.getText();
+			
+			WebElement popupConfirmationOK2=driver.findElement(By.xpath("(//app-alert-dialog/div)[3]/button"));
+			jsUtil.clickElementByJS(popupConfirmationOK2);
+			log.info("Verify Success or Fail Message");
+			log.info("Confirmation - OK");
+					
+		} catch (Exception e) {
+			System.out.println("Issue in Common.copyScheduleFromPolicyPage "+e);
+		}
+		return successfulMessage;
 	}
 }

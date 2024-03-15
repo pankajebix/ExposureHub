@@ -21,8 +21,38 @@ public class S02updatePolicyPage {
 		common.login(AppConstants.username, AppConstants.password);
 	}
 	
+	public String createNewPolicy(String policyNumber) {
+		String actual=common.createNewPolicyWithClassName(policyNumber, AppConstants.policy_Assured+"S02", 2, AppConstants.className_two_class_With_Different_Name);
+		return actual;
+	}
+	
+	public String addNewLimitGroup(String groupName) {
+		String actual=common.addNewLimitGroup(groupName, AppConstants.country_Australia);
+		return actual;
+	}
+	
+	public String addNewLimit(String validationMessage) {
+		String actual=common.addNewLimit(validationMessage);
+		return actual;
+	}
+	
+	public String addBulkSchedule1(String validationMessage) {
+		String actual=common.addBulkScheduleGeneric(AppConstants.class_Cyber_Fraction_Value, AppConstants.country_Australia, validationMessage);
+		return actual;
+	}
+	
+	public String addBulkSchedule2(String validationMessage) {
+		String actual=common.addBulkScheduleGeneric(AppConstants.class_Offshore_Fraction_Value, AppConstants.country_US, validationMessage);
+		return actual;
+	}
+	
+	public String addBulkSchedule3(String validationMessage) {
+		String actual=common.addBulkScheduleGeneric(AppConstants.class_Offshore_Renewables_Fraction_Value, AppConstants.country_US, validationMessage);
+		return actual;
+	}
+	
 	public String searchPolicy(String policyNumber) {
-		String actual=common.searchPolicyAndOpen(policyNumber);
+		String actual=common.searchPolicyFromPolicyPageAndOpen(policyNumber);
 		return actual;
 	}
 	public String editPolicyDetails(String policyReferenceDataUpdated, String assuredDataUpdated) {
@@ -31,12 +61,12 @@ public class S02updatePolicyPage {
 	}
 	
 	public String editLimitGroup(String newGroupName) {
-		String actual=common.editLimitGroup(AppConstants.limit_Group_Name+"S01", newGroupName, AppConstants.country_Australia);
+		String actual=common.editLimitGroup(AppConstants.limit_Group_Name+"S02", newGroupName, AppConstants.country_Australia);
 		return actual;
 	}
 	
 	public String copyAndCreateNewLimitGroup(String validationMessage) {
-		String actual=common.copyLimitGroup(AppConstants.limit_Group_Name+"S01update", validationMessage);
+		String actual=common.copyLimitGroup(AppConstants.limit_Group_Name+"S02update", validationMessage);
 		return actual;
 	}
 	public String copyAndCreateNewLimit(String validationMessage) {

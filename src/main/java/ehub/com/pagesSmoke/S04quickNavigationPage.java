@@ -25,8 +25,38 @@ public class S04quickNavigationPage {
 		common.login(AppConstants.username, AppConstants.password);
 	}
 	
+	public String createNewPolicy(String policyNumber) {
+		String actual=common.createNewPolicyWithClassName(policyNumber, AppConstants.policy_Assured+"S04", 2, AppConstants.className_two_class_With_Different_Name);
+		return actual;
+	}
+	
+	public String addNewLimitGroup(String groupName) {
+		String actual=common.addNewLimitGroup(groupName, AppConstants.country_Australia);
+		return actual;
+	}
+	
+	public String addNewLimit(String validationMessage) {
+		String actual=common.addNewLimit(validationMessage);
+		return actual;
+	}
+	
+	public String addCyberSchedule(String validationMessage) {
+		String actual=common.addBulkScheduleGeneric(AppConstants.class_Cyber_Fraction_Value, AppConstants.country_Australia, validationMessage);
+		return actual;
+	}
+	
+	public String addOffshoreSchedule(String validationMessage) {
+		String actual=common.addBulkScheduleGeneric(AppConstants.class_Offshore_Fraction_Value, AppConstants.country_US, validationMessage);
+		return actual;
+	}
+	
+	public String addOffshoreRenewablesSchedule(String validationMessage) {
+		String actual=common.addBulkScheduleGeneric(AppConstants.class_Offshore_Renewables_Fraction_Value, AppConstants.country_US, validationMessage);
+		return actual;
+	}
+	
 	public String searchPolicy(String policyNumber) {
-		String actual=common.searchPolicyAndOpen(policyNumber);
+		String actual=common.searchPolicyFromPolicyPageAndOpen(policyNumber);
 		return actual;
 	}
 	
@@ -118,7 +148,7 @@ public class S04quickNavigationPage {
 			common.eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_SHORT_TIME_OUT, common.leftMenuNavigation);
 			common.jsUtil.clickElementByJS(common.leftMenuNavigation);
 			log.info("Clicked on Left Menu Navigation");
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			actual=driver.getCurrentUrl();
 		} catch (Exception e) {
 			System.out.println("Issue in S04quickNavigationPage.leftMenuNavigation "+e);

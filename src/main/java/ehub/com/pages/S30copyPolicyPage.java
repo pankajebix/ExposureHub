@@ -26,7 +26,7 @@ public class S30copyPolicyPage {
 	}
 	
 	public String copyNewPolicy(String policyNumber) {
-		String actual=common.copyNewPolicyFromPolicyPage(policyNumber);
+		String actual=common.copyNewPolicyFromPolicyPage(policyNumber, "No");
 		return actual;
 	}
 }

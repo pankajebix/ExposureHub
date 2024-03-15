@@ -486,6 +486,15 @@ public class ElementUtil {
 		return wait.until(ExpectedConditions.visibilityOf(ele));
 
 	}
+	
+	public List<WebElement> waitForElementPresenceWithFluentWait(int timeOut, int pollingTime, List<WebElement> ele) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class)
+				.pollingEvery(Duration.ofSeconds(pollingTime)).withMessage("...element is not found on the page....");
+
+		return wait.until(ExpectedConditions.visibilityOfAllElements(ele));
+
+	}
 
 	public void waitForAlertWithFluentWait(int timeOut, int pollingTime) {
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))

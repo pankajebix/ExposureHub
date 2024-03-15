@@ -44,21 +44,21 @@ public class S03deletePolicyPageTest extends BaseTest{
 	
 	
 	@Test(priority = 5, enabled = true)
-	public void deleteScheduleCyber() {
+	public void deleteOnshoreSchedule() {
 		String message="cyber schedule deleted";
 		String actual=S03page.deleteScheduleCyber(message);
 		Assert.assertEquals(actual, message);
 	}
 	
 	@Test(priority = 6, enabled = true)
-	public void deleteScheduleOffshore() {
+	public void deleteSchedule2() {
 		String message="offshore schedule deleted";
 		String actual=S03page.deleteScheduleOffshore(message);
 		Assert.assertEquals(actual, message);
 	}
 	
 	@Test(priority = 7, enabled = true)
-	public void deleteScheduleOffshoreRenewables() {
+	public void deleteOffshoreSchedule() {
 		String message="offshore renewables schedule deleted";
 		String actual=S03page.deleteScheduleOffshoreRenewables(message);
 		Assert.assertEquals(actual, message);

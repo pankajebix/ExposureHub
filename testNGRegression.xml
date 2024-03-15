@@ -345,8 +345,7 @@
 		</classes>
 	</test>
 	
-	<test
-		name="Scenario #36 : Reverse Geocoding - Map Search"
+	<test name="Scenario #36 : Reverse Geocoding - Map Search"
 		enabled="true">
 
 		<classes>

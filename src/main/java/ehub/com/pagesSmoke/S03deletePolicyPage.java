@@ -22,7 +22,7 @@ public class S03deletePolicyPage {
 	}
 	
 	public void searchPolicy() {
-		common.searchPolicyAndOpen(AppConstants.policy_Number+"S01update");
+		common.searchPolicyAndOpen(AppConstants.policy_Number+"S02update");
 	}
 	
 	public Boolean deletLimit() {
@@ -46,7 +46,7 @@ public class S03deletePolicyPage {
 		return deleteSchedule;
 	}
 	public void deletePolicy() {
-		common.deletePolicyFromPolicyPage(AppConstants.policy_Number+"S01update");
+		common.deletePolicyFromPolicyPage(AppConstants.policy_Number+"S02update");
 	}
 	
 
