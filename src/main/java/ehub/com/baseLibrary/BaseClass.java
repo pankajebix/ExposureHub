@@ -76,8 +76,8 @@ public class BaseClass {
 //		optionsEdge.addArguments("--remote-allow-origins=*");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			//driver = new ChromeDriver();
-			tlDriver.set(new ChromeDriver());
+			driver = new ChromeDriver();
+			//tlDriver.set(new ChromeDriver());
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
@@ -99,14 +99,14 @@ public class BaseClass {
 			log.info("Kindly pass the right browser name.");
 		}
 
-		getDriver().manage().deleteAllCookies();
+		driver.manage().deleteAllCookies();
 		String url = excUtil.getCellData("basicDetails", "Value", 3);
 		// driver.get(PropertyUtility.getProperty("url"));
-		getDriver().get(url);
+		driver.get(url);
 		log.info("Enter URL : " + url);
-		getDriver().manage().window().maximize();
-		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		return getDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		return driver;
 	}
 	
 	/*
@@ -213,7 +213,7 @@ public class BaseClass {
 	public void tearDown() {
 		try {
 			Thread.sleep(1000);
-			getDriver().quit();
+			driver.quit();
 
 		} catch (Exception e) {
 			System.out.println("Issue in BaseTest.tearDown " + e);
