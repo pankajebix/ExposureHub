@@ -18,6 +18,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import ehub.com.baseLibrary.BaseClass;
+import ehub.com.constants.AppConstants;
 
 public class ExtentReportListener implements ITestListener {
 
@@ -45,6 +46,9 @@ public class ExtentReportListener implements ITestListener {
 		extentReports = new ExtentReports();
 		ExtentSparkReporter reporter = new ExtentSparkReporter(OUTPUT_FOLDER + FILE_NAME);
 		reporter.config().setReportName("Exposure Hub Automation Test Report");
+		reporter.config().setDocumentTitle("Exposure Hub Automation Test Report");
+		
+		
 		extentReports.attachReporter(reporter);
 		extentReports.setSystemInfo("System", "Window");
 		extentReports.setSystemInfo("Author", "Pankaj Yadav");
@@ -53,6 +57,7 @@ public class ExtentReportListener implements ITestListener {
 		
 		//extra		
 		extentReports.setSystemInfo("Environment Name", BaseClass.environmentName());
+		extentReports.setSystemInfo("Release Version", AppConstants.release_Version);
 		//extra
 		
 		return extentReports;

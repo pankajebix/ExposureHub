@@ -23,7 +23,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #02 : Update Policy" enabled="false">
+	<test name="Scenario #02 : Update Policy" enabled="true">
 
 		<classes>
 			<class
@@ -31,7 +31,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #04 : Quick Navigation" enabled="false">
+	<test name="Scenario #04 : Quick Navigation" enabled="true">
 
 		<classes>
 			<class
@@ -39,7 +39,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #05 : MiM (Module in Module)" enabled="false">
+	<test name="Scenario #05 : MiM (Module in Module)" enabled="true">
 
 		<classes>
 			<class
@@ -47,7 +47,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #06 : Import - Onshore Schedules" enabled="false">
+	<test name="Scenario #06 : Import - Onshore Schedules" enabled="true">
 
 		<classes>
 			<class
@@ -55,7 +55,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #07 : Import - Offshore Schedules" enabled="false">
+	<test name="Scenario #07 : Import - Offshore Schedules" enabled="true">
 
 		<classes>
 			<class
@@ -63,7 +63,7 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #08 : Quick Quote" enabled="false">
+	<test name="Scenario #08 : Quick Quote" enabled="true">
 
 		<classes>
 			<class
@@ -71,28 +71,13 @@
 		</classes>
 	</test>
 	
-	<test name="Scenario #03 : Delete Policy" enabled="false">
+	<test name="Scenario #03 : Delete Policy" enabled="true">
 
 		<classes>
 			<class
 				name="TestSmoke.S03deletePolicyPageTest"></class>
 		</classes>
-	</test>
-	
-	<test name="Scenario #09 : Copy Policy" enabled="false">
-
-		<classes>
-			<class
-				name="TestSmoke.S09copyPolicyPageTest"></class>
-		</classes>
-	</test>
-	
-	<test name="Scenario 10 : Copy Schedules" enabled="false">
-
-		<classes>
-			<class
-				name="TestSmoke.S10copySchedulesPageTest"></class>
-		</classes>
 	</test>	
+	
 			
 </suite>

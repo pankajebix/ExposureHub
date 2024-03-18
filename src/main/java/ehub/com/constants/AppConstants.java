@@ -42,6 +42,8 @@ public class AppConstants {
 	public static final String REGISTER_SHEET_NAME = "register";
 
 	// *******************************************************************************************************
+	public static final String release_Version = excUtil.getCellData("basicDetails", "Value", 4).trim();
+	
 	public static final String username = excUtil.getCellData("loginCredentials", "Username", 2);
 	public static final String password = excUtil.getCellData("loginCredentials", "Password", 2);
 	

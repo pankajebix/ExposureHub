@@ -8,7 +8,6 @@ import java.time.Duration;
 import java.util.Calendar;
 
 import org.apache.log4j.Logger;
-import org.aspectj.lang.annotation.After;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -76,8 +75,8 @@ public class BaseClass {
 //		optionsEdge.addArguments("--remote-allow-origins=*");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();
-			//tlDriver.set(new ChromeDriver());
+			//driver = new ChromeDriver();
+			tlDriver.set(new ChromeDriver());
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
@@ -99,14 +98,14 @@ public class BaseClass {
 			log.info("Kindly pass the right browser name.");
 		}
 
-		driver.manage().deleteAllCookies();
+		getDriver().manage().deleteAllCookies();
 		String url = excUtil.getCellData("basicDetails", "Value", 3);
 		// driver.get(PropertyUtility.getProperty("url"));
-		driver.get(url);
+		getDriver().get(url);
 		log.info("Enter URL : " + url);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		return driver;
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		return getDriver();
 	}
 	
 	/*
@@ -213,7 +212,7 @@ public class BaseClass {
 	public void tearDown() {
 		try {
 			Thread.sleep(1000);
-			driver.quit();
+			getDriver().quit();
 
 		} catch (Exception e) {
 			System.out.println("Issue in BaseTest.tearDown " + e);
@@ -221,6 +220,8 @@ public class BaseClass {
 	}
 	@AfterSuite
 	public void sendEmail() {
-		SendEmail.main(null);
+		if(excUtil.getCellData("basicDetails", "Value", 5).trim().equalsIgnoreCase("yes")) {
+			SendEmail.main(null);			
+		}		
 	}
 }
