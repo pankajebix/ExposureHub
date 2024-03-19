@@ -68,11 +68,7 @@ public class BaseClass {
 	public WebDriver initilization() {
 		String browserName = excUtil.getCellData("basicDetails", "Value", 2).trim();
 		// String browserName = PropertyUtility.getProperty("browserName").trim();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--no-sandbox"); //Bypass OS security model   
-		options.addArguments("--start-maximized");
-		options.addArguments("--disable-dev-shm-usage");
-		
+//		ChromeOptions options = new ChromeOptions();
 //		FirefoxOptions optionsFirefox = new FirefoxOptions();
 //		EdgeOptions optionsEdge = new EdgeOptions();
 //		options.addArguments("--remote-allow-origins=*");
@@ -80,8 +76,8 @@ public class BaseClass {
 //		optionsEdge.addArguments("--remote-allow-origins=*");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver(options);
-			//tlDriver.set(new ChromeDriver());
+			driver = new ChromeDriver();
+			//tlDriver.set(new ChromeDriver(options));
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
