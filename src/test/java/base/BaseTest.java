@@ -8,8 +8,7 @@ public class BaseTest extends BaseClass {
 
 	public static WebDriver driver;
 
-	public WebDriver setup() {
+	public void setup() {
 		driver = initilization();
-		return driver;
 	}
 }

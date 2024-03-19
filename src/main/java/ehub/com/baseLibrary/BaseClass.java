@@ -39,7 +39,7 @@ import ehub.com.utils.TestUtility;
 public class BaseClass {
 
 	public static ExtentTest test;
-	public WebDriver driver;
+	private WebDriver driver;
 	public static ExtentReports extent;
 
 	static Logger log = Logger.getLogger(BaseClass.class);
