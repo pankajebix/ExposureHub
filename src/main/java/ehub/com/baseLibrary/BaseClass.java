@@ -38,12 +38,14 @@ import ehub.com.utils.TestUtility;
 public class BaseClass {
 
 	public static ExtentTest test;
-	private static WebDriver driver;
+	//private WebDriver driver;
 	public static ExtentReports extent;
 
 	static Logger log = Logger.getLogger(BaseClass.class);
 	public static ExcelUtil excUtil = new ExcelUtil(
 			System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
+
+	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
 	@BeforeSuite
 	public void beforeSuite() {
@@ -51,8 +53,8 @@ public class BaseClass {
 			extent = ExtentManager.getInstance();
 		}
 		if (PropertyUtility.getProperty("createLogReportStatusYesOrNo").equalsIgnoreCase("yes")) {
-			TestUtility.setdateForLog4j();			
-		}		
+			TestUtility.setdateForLog4j();
+		}
 	}
 
 	@BeforeTest
@@ -72,18 +74,45 @@ public class BaseClass {
 //		optionsFirefox.addArguments("--remote-allow-origins=*");
 //		optionsEdge.addArguments("--remote-allow-origins=*");
 
-		
-		driver = new ChromeDriver();		
-			
-			
-		driver.manage().deleteAllCookies();
+		if (browserName.equalsIgnoreCase("chrome")) {
+			// driver = new ChromeDriver();
+			tlDriver.set(new ChromeDriver());
+			log.info(browserName + " : is launched successfully");
+
+		} else if (browserName.equalsIgnoreCase("firefox")) {
+			// driver = new FirefoxDriver();
+			tlDriver.set(new FirefoxDriver());
+			log.info(browserName + " : is launched successfully");
+
+		} else if (browserName.equalsIgnoreCase("ie")) {
+			// driver = new InternetExplorerDriver();
+			tlDriver.set(new InternetExplorerDriver());
+			log.info(browserName + " : is launched successfully");
+
+		} else if (browserName.equalsIgnoreCase("edge")) {
+			// driver = new EdgeDriver();
+			tlDriver.set(new EdgeDriver());
+			log.info(browserName + " : is launched successfully");
+		} else {
+			System.out.println("Kindly pass the right browser name.");
+			log.info("Kindly pass the right browser name.");
+		}
+
+		getDriver().manage().deleteAllCookies();
 		String url = excUtil.getCellData("basicDetails", "Value", 3);
 		// driver.get(PropertyUtility.getProperty("url"));
-		driver.get(url);
+		getDriver().get(url);
 		log.info("Enter URL : " + url);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		return driver;
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		return getDriver();
+	}
+
+	/*
+	 * get the local thread copy of the driver
+	 */
+	public synchronized static WebDriver getDriver() {
+		return tlDriver.get();
 	}
 
 	@BeforeMethod
@@ -124,8 +153,7 @@ public class BaseClass {
 	public static void logExtentReport(String msg) {
 		if (PropertyUtility.getProperty("showInputDataAndActionInExtentReportDateAndTimeWiseYesOrNo")
 				.equalsIgnoreCase("yes")
-				&& PropertyUtility.getProperty("createExtentReportDateAndTimeWiseYesOrNo")
-						.equalsIgnoreCase("yes")) {
+				&& PropertyUtility.getProperty("createExtentReportDateAndTimeWiseYesOrNo").equalsIgnoreCase("yes")) {
 			test.log(Status.INFO, msg);
 		}
 		if (PropertyUtility.getProperty("showInputDataAndActionInTestExecutionReportYesOrNo").equalsIgnoreCase("yes")) {
@@ -136,7 +164,7 @@ public class BaseClass {
 	public static String getScreenShots(String imageName) {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
-		File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		File srcFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
 
 		File destFile = null;
 
@@ -178,21 +206,22 @@ public class BaseClass {
 		String name = excUtil.getCellData("chooseTestEnvironment", "chooseTestEnvironment", 2);
 		return name;
 	}
-	
+
 	@AfterTest
 	public void tearDown() {
 		try {
 			Thread.sleep(1000);
-			driver.quit();
+			getDriver().quit();
 
 		} catch (Exception e) {
 			System.out.println("Issue in BaseTest.tearDown " + e);
 		}
 	}
+
 	@AfterSuite
 	public void sendEmail() {
-		if(excUtil.getCellData("basicDetails", "Value", 5).trim().equalsIgnoreCase("yes")) {
-			SendEmail.main(null);			
-		}		
+		if (excUtil.getCellData("basicDetails", "Value", 5).trim().equalsIgnoreCase("yes")) {
+			SendEmail.main(null);
+		}
 	}
 }
