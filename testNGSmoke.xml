@@ -2,12 +2,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="Exposure Hub Smoke" verbose="4" parallel="none" thread-count="2">
-		
+
 	<listeners>
 		<listener
 			class-name="ehub.com.listeners.ExtentReportListener" />
 	</listeners>
-	
+
 	<test name="Login Page" enabled="true">
 
 		<classes>
@@ -22,7 +22,7 @@
 				name="TestSmoke.S01createNewPolicyAllClassesPageTest"></class>
 		</classes>
 	</test>
-	
+
 	<test name="Scenario #02 : Update Policy" enabled="false">
 
 		<classes>
@@ -30,7 +30,15 @@
 				name="TestSmoke.S02updatePolicyPageTest"></class>
 		</classes>
 	</test>
-	
+
+	<test name="Scenario #03 : Delete Policy" enabled="false">
+
+		<classes>
+			<class
+				name="TestSmoke.S03deletePolicyPageTest"></class>
+		</classes>
+	</test>
+
 	<test name="Scenario #04 : Quick Navigation" enabled="false">
 
 		<classes>
@@ -38,7 +46,7 @@
 				name="TestSmoke.S04quickNavigationPageTest"></class>
 		</classes>
 	</test>
-	
+
 	<test name="Scenario #05 : MiM (Module in Module)" enabled="false">
 
 		<classes>
@@ -46,7 +54,7 @@
 				name="TestSmoke.S05mimPageTest"></class>
 		</classes>
 	</test>
-	
+
 	<test name="Scenario #06 : Import - Onshore Schedules" enabled="false">
 
 		<classes>
@@ -54,7 +62,7 @@
 				name="TestSmoke.S06importOnshoreSchedulesPageTest"></class>
 		</classes>
 	</test>
-	
+
 	<test name="Scenario #07 : Import - Offshore Schedules" enabled="false">
 
 		<classes>
@@ -62,7 +70,7 @@
 				name="TestSmoke.S07importOffshoreSchedulesPageTest"></class>
 		</classes>
 	</test>
-	
+
 	<test name="Scenario #08 : Quick Quote" enabled="false">
 
 		<classes>
@@ -70,14 +78,6 @@
 				name="TestSmoke.S08quickQuotePageTest"></class>
 		</classes>
 	</test>
-	
-	<test name="Scenario #03 : Delete Policy" enabled="false">
 
-		<classes>
-			<class
-				name="TestSmoke.S03deletePolicyPageTest"></class>
-		</classes>
-	</test>	
-	
-			
+
 </suite>

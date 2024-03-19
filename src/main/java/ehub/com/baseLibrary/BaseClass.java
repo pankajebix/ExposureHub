@@ -72,29 +72,10 @@ public class BaseClass {
 //		optionsFirefox.addArguments("--remote-allow-origins=*");
 //		optionsEdge.addArguments("--remote-allow-origins=*");
 
-		if (browserName.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();		
+		
+		driver = new ChromeDriver();		
 			
-			log.info(browserName + " : is launched successfully");
-
-		} else if (browserName.equalsIgnoreCase("firefox")) {
-			//driver = new FirefoxDriver();
 			
-			log.info(browserName + " : is launched successfully");
-
-		} else if (browserName.equalsIgnoreCase("ie")) {
-			//driver = new InternetExplorerDriver();
-			
-			log.info(browserName + " : is launched successfully");
-
-		} else if (browserName.equalsIgnoreCase("edge")) {
-			//driver = new EdgeDriver();
-			log.info(browserName + " : is launched successfully");
-		} else {
-			System.out.println("Kindly pass the right browser name.");
-			log.info("Kindly pass the right browser name.");
-		}
-
 		driver.manage().deleteAllCookies();
 		String url = excUtil.getCellData("basicDetails", "Value", 3);
 		// driver.get(PropertyUtility.getProperty("url"));
