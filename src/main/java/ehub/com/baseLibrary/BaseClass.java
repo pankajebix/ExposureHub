@@ -54,7 +54,11 @@ public class BaseClass {
 		}
 		if (PropertyUtility.getProperty("createLogReportStatusYesOrNo").equalsIgnoreCase("yes")) {
 			TestUtility.setdateForLog4j();			
-		}	
+		}
+		
+		// attach logo in extent report
+		ExtentReports extent=new ExtentReports();
+		
 	}
 
 	@BeforeTest
