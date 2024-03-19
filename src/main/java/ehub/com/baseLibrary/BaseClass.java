@@ -55,11 +55,7 @@ public class BaseClass {
 		}
 		if (PropertyUtility.getProperty("createLogReportStatusYesOrNo").equalsIgnoreCase("yes")) {
 			TestUtility.setdateForLog4j();			
-		}
-		
-		// attach logo in extent report
-		ExtentReports extent=new ExtentReports();
-		
+		}		
 	}
 
 	@BeforeTest
@@ -81,7 +77,7 @@ public class BaseClass {
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			//driver = new ChromeDriver();
-			tlDriver.set(new ChromeDriver(options));
+			tlDriver.set(new ChromeDriver(options.addArguments("--remote-allow-origins=*")));
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
