@@ -73,7 +73,7 @@ public class BaseClass {
 		options.addArguments("--start-maximized");
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--headless");
-		options.addArguments("--remote-allow-origins=*");
+		//options.addArguments("--remote-allow-origins=*");
 //		FirefoxOptions optionsFirefox = new FirefoxOptions();
 //		EdgeOptions optionsEdge = new EdgeOptions();
 //		options.addArguments("--remote-allow-origins=*");
