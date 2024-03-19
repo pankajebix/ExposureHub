@@ -12,7 +12,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -39,7 +38,7 @@ import ehub.com.utils.TestUtility;
 public class BaseClass {
 
 	public static ExtentTest test;
-	private WebDriver driver;
+	//private WebDriver driver;
 	public static ExtentReports extent;
 
 	static Logger log = Logger.getLogger(BaseClass.class);
@@ -76,8 +75,8 @@ public class BaseClass {
 //		optionsEdge.addArguments("--remote-allow-origins=*");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			driver = new ChromeDriver();		
-			//tlDriver.set(new ChromeDriver());
+			//driver = new ChromeDriver();		
+			tlDriver.set(new ChromeDriver());
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
@@ -99,14 +98,14 @@ public class BaseClass {
 			log.info("Kindly pass the right browser name.");
 		}
 
-		driver.manage().deleteAllCookies();
+		getDriver().manage().deleteAllCookies();
 		String url = excUtil.getCellData("basicDetails", "Value", 3);
 		// driver.get(PropertyUtility.getProperty("url"));
-		driver.get(url);
+		getDriver().get(url);
 		log.info("Enter URL : " + url);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		return driver;
+		getDriver().manage().window().maximize();
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		return getDriver();
 	}
 	
 	/*
