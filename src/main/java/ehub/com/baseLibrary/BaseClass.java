@@ -44,8 +44,6 @@ public class BaseClass {
 	static Logger log = Logger.getLogger(BaseClass.class);
 	public static ExcelUtil excUtil = new ExcelUtil(
 			System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);
-	
-	//public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
 	@BeforeSuite
 	public void beforeSuite() {
@@ -76,22 +74,21 @@ public class BaseClass {
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			//driver = new ChromeDriver();		
-			//tlDriver.set(new ChromeDriver());
+			
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
 			//driver = new FirefoxDriver();
-			//tlDriver.set(new FirefoxDriver());
+			
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("ie")) {
 			//driver = new InternetExplorerDriver();
-			//tlDriver.set(new InternetExplorerDriver());
+			
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("edge")) {
 			//driver = new EdgeDriver();
-			//tlDriver.set(new EdgeDriver());
 			log.info(browserName + " : is launched successfully");
 		} else {
 			System.out.println("Kindly pass the right browser name.");
@@ -107,13 +104,6 @@ public class BaseClass {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver;
 	}
-	
-	/*
-	 * get the local thread copy of the driver
-	 */
-//	public synchronized static WebDriver getDriver() {
-//		return tlDriver.get();
-//	}
 
 	@BeforeMethod
 	public void beforeMethod(ITestResult result) {
