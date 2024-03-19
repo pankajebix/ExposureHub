@@ -12,6 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -71,7 +72,7 @@ public class BaseClass {
 	public WebDriver initilization() {
 		String browserName = excUtil.getCellData("basicDetails", "Value", 2).trim();
 		// String browserName = PropertyUtility.getProperty("browserName").trim();
-//		ChromeOptions options = new ChromeOptions();
+		ChromeOptions options = new ChromeOptions();
 //		FirefoxOptions optionsFirefox = new FirefoxOptions();
 //		EdgeOptions optionsEdge = new EdgeOptions();
 //		options.addArguments("--remote-allow-origins=*");
@@ -80,7 +81,7 @@ public class BaseClass {
 
 		if (browserName.equalsIgnoreCase("chrome")) {
 			//driver = new ChromeDriver();
-			tlDriver.set(new ChromeDriver());
+			tlDriver.set(new ChromeDriver(options));
 			log.info(browserName + " : is launched successfully");
 
 		} else if (browserName.equalsIgnoreCase("firefox")) {
