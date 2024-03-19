@@ -73,7 +73,7 @@ public class BaseClass {
 //		optionsEdge.addArguments("--remote-allow-origins=*");
 
 		if (browserName.equalsIgnoreCase("chrome")) {
-			//driver = new ChromeDriver();		
+			driver = new ChromeDriver();		
 			
 			log.info(browserName + " : is launched successfully");
 
