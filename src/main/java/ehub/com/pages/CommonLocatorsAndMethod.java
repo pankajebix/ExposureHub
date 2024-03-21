@@ -12,6 +12,8 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+
+import ehub.com.baseLibrary.BaseClass;
 import ehub.com.constants.AppConstants;
 import ehub.com.utils.ElementUtil;
 import ehub.com.utils.ExcelUtil;
@@ -445,12 +447,14 @@ public class CommonLocatorsAndMethod {
 				String className[] = classNameWithCommaSeprated.split(",");
 				WebElement classNameValue = driver
 						.findElement(By.xpath("//span[text()='" + " " + className[i] + " " + "']"));
-
+				
 				eleUtil.waitForElementVisibleAndToBeClickable(classNameValue, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
-
+				String classNameActual=classNameValue.getText();
+				
 				jsUtil.clickElementByJS(classNameValue);
 				Thread.sleep(500);
-				log.info("Select Class - " + classNameValue);
+				log.info("Select Class - " + classNameActual);
+				BaseClass.logExtentReport("Select Class - " + classNameActual);
 			}
 
 			eleUtil.clickTab();
@@ -468,11 +472,13 @@ public class CommonLocatorsAndMethod {
 
 			policyReference.sendKeys(policyReferenceData);
 			log.info("Enter Policy Reference : " + policyReferenceData);
+			BaseClass.logExtentReport("Enter Policy Reference : " + policyReferenceData);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(EnterAssured, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			EnterAssured.sendKeys(policyAssuredData);
 			log.info("Enter Assured : " + policyAssuredData);
+			BaseClass.logExtentReport("Enter Assured : " + policyAssuredData);
 
 			jsUtil.scrollIntoViewTrue(other_Field_text);
 			log.info("Scroll till other field text");
@@ -488,6 +494,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(PolicySave, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			PolicySave.click();
 			log.info("Clicked on Save");
+			BaseClass.logExtentReport("Clicked on Save");
 
 			eleUtil.waitForElementVisibleAndToBeClickable(PolicyNavigationImage, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -708,6 +715,7 @@ public class CommonLocatorsAndMethod {
 			Thread.sleep(2000);
 			jsUtil.clickElementByJS(editPolicy);
 			log.info("Clicked on Edit");
+			BaseClass.logExtentReport("Clicked on Edit");
 			Thread.sleep(1000);
 
 			jsUtil.scrollIntoViewTrue(policyReference);
@@ -717,18 +725,22 @@ public class CommonLocatorsAndMethod {
 			policyReference.clear();
 			policyReference.sendKeys(policyReferenceData);
 			log.info("Enter Policy Reference : " + policyReferenceData);
+			BaseClass.logExtentReport("Enter Policy Reference : " + policyReferenceData);
 
 			Thread.sleep(3000);
 
 			EnterAssured.clear();
 			EnterAssured.sendKeys(policyAssuredData);
 			log.info("Enter Assured : " + policyAssuredData);
+			BaseClass.logExtentReport("Enter Assured : " + policyAssuredData);
 
 			jsUtil.scrollIntoViewTrue(PolicySave);
 			Thread.sleep(2000);
 
 			PolicySave.click();
 			log.info("Clicked on Save");
+			BaseClass.logExtentReport("Clicked on Save");
+			
 			Thread.sleep(4000);
 
 			PolicyNavigationImage.click();
@@ -767,6 +779,7 @@ public class CommonLocatorsAndMethod {
 			Thread.sleep(3000);
 			LimitGroup_Tab.sendKeys(Keys.TAB).sendKeys(groupName).build().perform();
 			log.info("Enter Limit Group Name : " + groupName);
+			BaseClass.logExtentReport("Enter Limit Group Name : " + groupName);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(Click_AddRule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -781,6 +794,7 @@ public class CommonLocatorsAndMethod {
 
 			CountryName.sendKeys(countryName);
 			log.info("Enter Country Name : " + countryName);
+			BaseClass.logExtentReport("Enter Country Name : " + countryName);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(PreviewButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -791,6 +805,7 @@ public class CommonLocatorsAndMethod {
 
 			SaveGroupLimits.click();
 			log.info("Clicked on Save Group");
+			BaseClass.logExtentReport("Clicked on Save Group");
 
 			eleUtil.waitForElementVisibleAndToBeClickable(saveTerms, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -823,12 +838,14 @@ public class CommonLocatorsAndMethod {
 
 			TermsNavigationImage.click();
 			log.info("Clicked on Terms Navigation");
+			BaseClass.logExtentReport("Clicked on Terms Navigation");
 			// Thread.sleep(5000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(Edit_TermsButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			jsUtil.clickElementByJS(Edit_TermsButton);
 			log.info("Clicked on Terms Edit");
+			BaseClass.logExtentReport("Clicked on Terms Edit");
 			// Thread.sleep(5000);
 
 			WebElement editGroupNameAndDetails = driver
@@ -839,12 +856,14 @@ public class CommonLocatorsAndMethod {
 					AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			editGroupNameAndDetails.click();
 			log.info("Clicked on Edit Limit Group Name and Details");
+			BaseClass.logExtentReport("Clicked on Edit Limit Group Name and Details");
 			// Thread.sleep(2000);
 			eleUtil.waitForElementVisibleAndToBeClickable(groupNameInputBox, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			groupNameInputBox.clear();
 			groupNameInputBox.sendKeys(newGroupName);
-			log.info("Enter Limit Group Name : " + newGroupName);
+			log.info("Enter Updated Limit Group Name : " + newGroupName);
+			BaseClass.logExtentReport("Enter Updated Limit Group Name : " + newGroupName);
 
 			// Thread.sleep(3000);
 			eleUtil.waitForElementVisibleAndToBeClickable(CountryName, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -854,7 +873,8 @@ public class CommonLocatorsAndMethod {
 
 			CountryName.clear();
 			CountryName.sendKeys(countryName);
-			log.info("Enter Country Name : " + countryName);
+			log.info("Enter Updated Country Name : " + countryName);
+			BaseClass.logExtentReport("Enter Updated Country Name : " + countryName);
 			// Thread.sleep(3000);
 			eleUtil.waitForElementVisibleAndToBeClickable(PreviewButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -864,7 +884,8 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(SaveGroupLimits, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			SaveGroupLimits.click();
-			log.info("Clicked on Save Group");
+			log.info("Clicked on Save Limit Group");
+			BaseClass.logExtentReport("Clicked on Save Limit Group");
 			// Thread.sleep(2000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(saveTerms, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -892,6 +913,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(Edit_TermsButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(Edit_TermsButton);
 			log.info("Clicked on Edit Terms");
+			BaseClass.logExtentReport("Clicked on Edit Terms");
 
 			int sizeBefore=rowSize.size();
 			
@@ -899,6 +921,7 @@ public class CommonLocatorsAndMethod {
 
 			jsUtil.clickElementByJS(Add_NewLimit);
 			log.info("Clicked on Add New Limit");
+			BaseClass.logExtentReport("Clicked on Add New Limit");
 
 			eleUtil.waitForElementVisibleAndToBeClickable(saveTerms, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			
@@ -909,7 +932,8 @@ public class CommonLocatorsAndMethod {
 			}
 			
 			jsUtil.clickElementByJS(saveTerms);
-			log.info("Clicked on Save Terms");			
+			log.info("Clicked on Save Terms");
+			BaseClass.logExtentReport("Clicked on Save Terms");
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(TermsNavigationImage, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -925,6 +949,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(coverageRuleNavigationImage, AppConstants.DEFAULT_LONG_TIME_OUT);
 			coverageRuleNavigationImage.click();
 			log.info("Clicked on Coverage Navigation");
+			BaseClass.logExtentReport("Clicked on Coverage Navigation");
 			// Thread.sleep(5000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(Edit_coverageRuleButton,
@@ -932,17 +957,20 @@ public class CommonLocatorsAndMethod {
 
 			Edit_coverageRuleButton.click();
 			log.info("Clicked on Coverage Edit");
+			BaseClass.logExtentReport("Clicked on Coverage Edit");
 			// Thread.sleep(7000);
 			eleUtil.waitForElementVisibleAndToBeClickable(Add_LimitGroupSign, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			jsUtil.clickElementByJS(Add_LimitGroupSign);
 			log.info("Clicked on Add Coverage Group");
+			BaseClass.logExtentReport("Clicked on Add Coverage Group");
 
 			Thread.sleep(2000);
 			Actions LimitGroup_Tab = new Actions(driver);
 			Thread.sleep(3000);
 			LimitGroup_Tab.sendKeys(Keys.TAB).sendKeys(coverageName).build().perform();
 			log.info("Enter Coverage Name : " + coverageName);
+			BaseClass.logExtentReport("Enter Coverage Name : " + coverageName);
 
 			// Thread.sleep(3000);
 			eleUtil.waitForElementVisibleAndToBeClickable(Click_AddRule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -950,6 +978,7 @@ public class CommonLocatorsAndMethod {
 			jsUtil.clickElementByJS(Click_AddRule);
 			// Click_AddRule.click();
 			log.info("Clicked on Add Rule Coverage");
+			BaseClass.logExtentReport("Clicked on Add Rule Coverage");
 			// Thread.sleep(3000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(CountryName, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -959,6 +988,7 @@ public class CommonLocatorsAndMethod {
 
 			CountryName.sendKeys(countryName);
 			log.info("Enter Country Name : " + countryName);
+			BaseClass.logExtentReport("Enter Country Name : " + countryName);
 			// Thread.sleep(3000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(PreviewButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -971,6 +1001,7 @@ public class CommonLocatorsAndMethod {
 
 			SaveGroupLimits.click();
 			log.info("Clicked on Save Coverage");
+			BaseClass.logExtentReport("Clicked on Save Coverage");
 			Thread.sleep(2000);
 
 			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_MEDIUM_TIME_OUT, 2, cancelButton);
@@ -988,6 +1019,7 @@ public class CommonLocatorsAndMethod {
 					.findElement(By.xpath("(//div[@col-id='CoverageGroupDescription'])[4]"));
 			eleUtil.waitForElementVisible(actualCoverageGroupNamePre, AppConstants.DEFAULT_LONG_TIME_OUT);
 			log.info("Verify created Coverage Name");
+			BaseClass.logExtentReport("Verify created Coverage Name");
 			
 			actualCoverageGroupName=eleUtil.retryWebElementGetText(actualCoverageGroupNamePre, 5);
 			//actualCoverageGroupName = actualCoverageGroupNamePre.getText();
@@ -1008,6 +1040,7 @@ public class CommonLocatorsAndMethod {
 			// Thread.sleep(1000);
 
 			log.info("Clicked on Class Navigation");
+			BaseClass.logExtentReport("Clicked on Class Navigation");
 			// Thread.sleep(5000);
 
 			WebElement editSchedule = driver.findElement(
@@ -1017,6 +1050,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(editSchedule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			editSchedule.click();
 			log.info("Clicked on Edit Schedule");
+			BaseClass.logExtentReport("Clicked on Edit Schedule");
 			// Thread.sleep(1000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(addSingleScheduleButton,
@@ -1027,12 +1061,14 @@ public class CommonLocatorsAndMethod {
 
 			addSingleScheduleButton.click();
 			log.info("Clicked on Add Single Schedule");
+			BaseClass.logExtentReport("Clicked on Add Single Schedule");
 			// Thread.sleep(5000);
 			eleUtil.waitForElementVisibleAndToBeClickable(addSingleScheduleSearch,
 					AppConstants.DEFAULT_LONG_TIME_OUT);
 
 			addSingleScheduleSearch.click();
-			log.info("Clicked on Single Schedule Search");
+			log.info("Clicked on Search");
+			BaseClass.logExtentReport("Clicked on Search");
 			Thread.sleep(5000);
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(addSingleScheduleData, AppConstants.DEFAULT_LONG_TIME_OUT);
@@ -1040,12 +1076,14 @@ public class CommonLocatorsAndMethod {
 			
 			jsUtil.clickElementByJS(addSingleScheduleData);
 			//addSingleScheduleData.click();
-			log.info("Add Single Schedule Data");
+			log.info("Select Data");
+			BaseClass.logExtentReport("Select Data");
 			Thread.sleep(5000);
 			eleUtil.waitForElementVisibleAndToBeClickable(saveSingleSchedule, AppConstants.DEFAULT_LONG_TIME_OUT);
 
 			saveSingleSchedule.click();
 			log.info("Clicked on Save Single Schedule");
+			BaseClass.logExtentReport("Clicked on Save Single Schedule");
 			Thread.sleep(5000);
 			eleUtil.waitForElementVisibleAndToBeClickable(TermsNavigationImage, AppConstants.DEFAULT_LONG_TIME_OUT);
 
@@ -1071,6 +1109,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, saveSingleSchedule);
 			saveSingleSchedule.click();
 			log.info("Clicked on Save Schedule");
+			BaseClass.logExtentReport("Clicked on Save Schedule");
 			// Thread.sleep(2000);
 
 		} catch (Exception e) {
@@ -1089,7 +1128,8 @@ public class CommonLocatorsAndMethod {
 			scheduleNavigationImage.click();
 			Thread.sleep(1000);
 
-			log.info("Clicked on Class Navigation");
+			log.info("Clicked on Schedule Navigation");
+			BaseClass.logExtentReport("Clicked on Schedule Navigation");
 			// Thread.sleep(5000);
 
 			WebElement editSchedule = driver.findElement(
@@ -1099,11 +1139,13 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(editSchedule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			editSchedule.click();
 			log.info("Clicked on Edit Schedule");
+			BaseClass.logExtentReport("Clicked on Edit Schedule");
 			// Thread.sleep(1000);
 			eleUtil.waitForElementVisibleAndToBeClickable(addBulkSchedule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
 			addBulkSchedule.click();
 			log.info("Clicked on Add Bulk Schedule");
+			BaseClass.logExtentReport("Clicked on Add Bulk Schedule");
 			// Thread.sleep(5000);
 			eleUtil.waitForElementVisibleAndToBeClickable(bulkScheduleCountryName,
 					AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -1113,6 +1155,7 @@ public class CommonLocatorsAndMethod {
 			bulkScheduleCountryName.clear();
 			bulkScheduleCountryName.sendKeys(countryName);
 			log.info("Enter Country Name : " + countryName);
+			BaseClass.logExtentReport("Enter Country Name : " + countryName);
 			Thread.sleep(8000);
 
 			// selectBulkCountryName1.click();
@@ -1124,6 +1167,7 @@ public class CommonLocatorsAndMethod {
 			jsUtil.clickElementByJS(selectBulkCountryName1);
 			Thread.sleep(1000);
 			log.info("Select Data 1");
+			BaseClass.logExtentReport("Select Data");
 			// Thread.sleep(3000);
 
 			// selectBulkCountryName2.click();
@@ -1136,6 +1180,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(applyBulkSchedule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			applyBulkSchedule.click();
 			log.info("Clicked on Apply (Schedule)");
+			BaseClass.logExtentReport("Clicked on Apply (Schedule)");
 			// Thread.sleep(5000);
 			eleUtil.waitForElementVisibleAndToBeClickable(closeBulkSchedule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			closeBulkSchedule.click();
@@ -1143,6 +1188,7 @@ public class CommonLocatorsAndMethod {
 
 			saveScheduleCyber.click();
 			log.info("Clicked on Save (Schedule)");
+			BaseClass.logExtentReport("Clicked on Save (Schedule)");
 			// Thread.sleep(5000);
 			eleUtil.waitForElementVisibleAndToBeClickable(TermsNavigationImage, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 
@@ -1333,6 +1379,7 @@ public class CommonLocatorsAndMethod {
 		try {
 			mapNavigationImage.click();
 			log.info("Clicked on Map Navigation");
+			BaseClass.logExtentReport("Clicked on Map Navigation");
 			Thread.sleep(8000);
 
 		} catch (Exception e) {
@@ -1509,7 +1556,8 @@ public class CommonLocatorsAndMethod {
 		try {
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, hubNavigation);
 			hubNavigation.click();
-			log.info("Clicked on Hub Navigation Image");
+			log.info("Clicked on Policy Navigation");
+			BaseClass.logExtentReport("Clicked on Policy Navigation");
 			//Thread.sleep(2000);
 			
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, searchPolicyInputBox);
@@ -1521,6 +1569,7 @@ public class CommonLocatorsAndMethod {
 
 			searchPolicyInputBox.sendKeys(policyNumberSearchData);
 			log.info("Enter Policy Number : "+policyNumberSearchData);
+			BaseClass.logExtentReport("Enter Policy Number : "+policyNumberSearchData);
 			
 			Thread.sleep(4000);
 			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_LONG_TIME_OUT, 2, searchedPolicyData);
@@ -1641,6 +1690,8 @@ public class CommonLocatorsAndMethod {
 		Boolean verifyDeletedLimit = false;
 		try {
 			TermsNavigationImage.click();
+			log.info("Clicked on Terms Navigation");
+			BaseClass.logExtentReport("Clicked on Terms Navigation");
 			Thread.sleep(1000);
 
 			jsUtil.scrollIntoViewTrue(Edit_TermsButton);
@@ -1649,6 +1700,7 @@ public class CommonLocatorsAndMethod {
 			Edit_TermsButton.click();
 			Thread.sleep(1000);
 			log.info("Clicked on Edit Terms");
+			BaseClass.logExtentReport("Clicked on Edit Terms");
 
 			int sizeBefore = limitSize.size();
 
@@ -1657,11 +1709,13 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(deleteLimit5, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			deleteLimit5.click();
 			log.info("Clicked on Delete Limit");
+			BaseClass.logExtentReport("Clicked on Delete Limit");
 			// Thread.sleep(1000);
 			eleUtil.waitForElementVisibleAndToBeClickable(deleteLimitConfirmationYes,
 					AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			deleteLimitConfirmationYes.click();
 			log.info("Clicked on Delete Confirmation - Yes");
+			BaseClass.logExtentReport("Clicked on Delete Confirmation - Yes");
 			Thread.sleep(3000);
 
 			int sizeAfter = limitSize.size();
@@ -1687,12 +1741,16 @@ public class CommonLocatorsAndMethod {
 		Boolean verifyDeletedLimitGroup = false;
 		try {
 			TermsNavigationImage.click();
+			log.info("Clicked on Terms Navigation");
+			BaseClass.logExtentReport("Clicked on Terms Navigation");
 			// Thread.sleep(1000);
 
 			jsUtil.scrollIntoViewTrue(Edit_TermsButton);
 			eleUtil.waitForElementVisibleAndToBeClickable(Edit_TermsButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			// Thread.sleep(1000);
 			Edit_TermsButton.click();
+			log.info("Clicked on Edit Terms");
+			BaseClass.logExtentReport("Clicked on Edit Terms");
 			Thread.sleep(1000);
 
 			int sizeBefore = limitSize.size();
@@ -1704,6 +1762,8 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(deleteLimitConfirmationYes,
 					AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			deleteLimitConfirmationYes.click();
+			log.info("Clicked on Delete Confirmation - Yes");
+			BaseClass.logExtentReport("Clicked on Delete Confirmation - Yes");
 			Thread.sleep(3000);
 
 			int sizeAfter = limitSize.size();
@@ -1735,17 +1795,20 @@ public class CommonLocatorsAndMethod {
 			
 			jsUtil.clickElementByJS(rowActionSearchedPolicy);
 			log.info("Clicked on Row Action Button");
+			BaseClass.logExtentReport("Clicked on Row Action Button");
 			Thread.sleep(2000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(rowActionDeleteButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(rowActionDeleteButton);
 			log.info("Clicked on Delete Button");
+			BaseClass.logExtentReport("Clicked on Delete Button");
 			Thread.sleep(2000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(deleteLimitConfirmationYes,
 					AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			deleteLimitConfirmationYes.click();
 			log.info("Delete Confirmation - Yes");
+			BaseClass.logExtentReport("Delete Confirmation - Yes");
 			Thread.sleep(2000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(hubNavigation, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -1782,6 +1845,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(scheduleNavigationImage, AppConstants.DEFAULT_LONG_TIME_OUT);
 			scheduleNavigationImage.click();
 			log.info("Clicked on Schedule Navigation");
+			BaseClass.logExtentReport("Clicked on Schedule Navigation");
 			Thread.sleep(1000);
 			
 			WebElement pagerRowSize=driver.findElement(By.xpath("//div[@class='class-icon-set-margin class-icon']/span[text()='"+classNameXpath+"']/ancestor::div[@class='schedule-grid ng-star-inserted']/expansion-panel/mat-expansion-panel/div/div/div/div/app-schedules/div/div/div/app-paginator/div[@class='pager-submodules']/p"));
@@ -1802,6 +1866,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(editSchedule, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			editSchedule.click();
 			log.info("Clicked on Edit Schedule");
+			BaseClass.logExtentReport("Clicked on Edit Schedule");
 			Thread.sleep(1000);
 
 			WebElement scheduleNavigationImage33 = driver.findElement(
@@ -1846,6 +1911,8 @@ public class CommonLocatorsAndMethod {
 				log.info("Clicked on Confirmation - Yes");
 				Thread.sleep(5000);
 			}
+			BaseClass.logExtentReport("Clicked on Option Delete");
+			BaseClass.logExtentReport("Clicked on Confirmation - Yes");
 //			List<WebElement> rowSizeScheduleAfter = driver.findElements(
 //					By.xpath("//div[@class='class-icon-set-margin class-icon']/span[text()='" + classNameXpath
 //							+ "']/ancestor::div[@class='schedule-grid ng-star-inserted']/expansion-panel/mat-expansion-panel/div/div/div/div/app-schedules/div/div/div/ag-grid-angular/div/div/div[@role='grid']/div[@ref='eBodyViewport']/div[@ref='leftContainer']/div"));
@@ -2317,10 +2384,12 @@ public class CommonLocatorsAndMethod {
 			TermsNavigationImage.click();
 			Thread.sleep(1000);
 			log.info("Clicked on Terms Navigation");
+			BaseClass.logExtentReport("Clicked on Terms Navigation");
 
 			eleUtil.waitForElementVisibleAndToBeClickable(Edit_TermsButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(Edit_TermsButton);
 			log.info("Clicked on Edit Terms");
+			BaseClass.logExtentReport("Clicked on Edit Terms");
 			Thread.sleep(1000);
 
 			int sizeBefore = rowSize.size();
@@ -2333,11 +2402,13 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(copyGroupName, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(copyGroupName);
 			log.info("Clicked on Copy Group Name");
+			BaseClass.logExtentReport("Clicked on Copy Group Name");
 			Thread.sleep(1000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(confirmationYes, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			confirmationYes.click();
 			log.info("Clicked on Confirmation - Yes");
+			BaseClass.logExtentReport("Clicked on Confirmation - Yes");
 			Thread.sleep(1000);
 
 			int sizeAfter = rowSize.size();
@@ -2364,11 +2435,13 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(TermsNavigationImage, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			TermsNavigationImage.click();
 			log.info("Clicked on Terms Navigation");
+			BaseClass.logExtentReport("Clicked on Terms Navigation");
 			Thread.sleep(1000);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(Edit_TermsButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(Edit_TermsButton);
 			log.info("Clicked on Edit Terms");
+			BaseClass.logExtentReport("Clicked on Edit Terms");
 			Thread.sleep(1000);
 
 			int sizeBefore = rowSize.size();
@@ -2381,6 +2454,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(copyLimit, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(copyLimit);
 			log.info("Clicked on Copy Limit");
+			BaseClass.logExtentReport("Clicked on Copy Limit");
 			Thread.sleep(5000);
 
 			// confirmationYes.click();
@@ -2460,6 +2534,7 @@ public class CommonLocatorsAndMethod {
 			Thread.sleep(1000);
 
 			log.info("Clicked on Schedule Navigation");
+			BaseClass.logExtentReport("Clicked on Schedule Navigation");
 			Thread.sleep(5000);
 
 			WebElement editSchedule = driver.findElement(
@@ -2469,6 +2544,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, editSchedule);
 			editSchedule.click();
 			log.info("Clicked on Edit Schedule");
+			BaseClass.logExtentReport("Clicked on Edit Schedule");
 			Thread.sleep(1000);
 
 			WebElement rowAction = driver.findElement(
@@ -2482,6 +2558,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, rowActionEditButton);
 			rowActionEditButton.click();
 			log.info("Clicked on Row Action - Edit");
+			BaseClass.logExtentReport("Clicked on Row Action - Edit");
 			Thread.sleep(3000);
 
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, editScheduleEditPopup);
@@ -2494,11 +2571,13 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, selectData);
 			jsUtil.clickElementByJS(selectData);
 			log.info("Select Option Data : " + selectOptionData);
+			BaseClass.logExtentReport("Select Option Data : " + selectOptionData);
 			Thread.sleep(1000);
 
 			editScheduleEditPopupInputBox.clear();
 			editScheduleEditPopupInputBox.sendKeys(inputData);
 			log.info("Option Input Data : " + inputData);
+			BaseClass.logExtentReport("Option Input Data : " + inputData);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(PreviewButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			PreviewButton.click();
@@ -2514,7 +2593,8 @@ public class CommonLocatorsAndMethod {
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(saveTerms, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			saveTerms.click();
-			log.info("Clicked on Save Terms");
+			log.info("Clicked on Save");
+			BaseClass.logExtentReport("Clicked on Save");
 			Thread.sleep(1000);
 
 			WebElement scheduleNavigationImage2 = driver.findElement(
@@ -2693,6 +2773,7 @@ public class CommonLocatorsAndMethod {
 			Thread.sleep(1000);
 
 			log.info("Clicked on Class Navigation");
+			BaseClass.logExtentReport("Clicked on Class Navigation");
 			Thread.sleep(5000);
 
 			WebElement editSchedule = driver.findElement(
@@ -2703,6 +2784,7 @@ public class CommonLocatorsAndMethod {
 
 			editSchedule.click();
 			log.info("Clicked on Edit Schedule");
+			BaseClass.logExtentReport("Clicked on Edit Schedule");
 			Thread.sleep(1000);
 
 			WebElement scheduleNavigationImage33 = driver.findElement(
@@ -2716,6 +2798,7 @@ public class CommonLocatorsAndMethod {
 			jsUtil.clickElementByJS(importScheduleButton);
 			Thread.sleep(5000);
 			log.info("Clicked on Import Button");
+			BaseClass.logExtentReport("Clicked on Import Button");
 
 			chooseFile.sendKeys(System.getProperty("user.dir") + importFilePath);
 			log.info("File Uploaded : "+importFilePath);
@@ -2728,6 +2811,7 @@ public class CommonLocatorsAndMethod {
 			
 				jsUtil.clickElementByJS(ClickOnGeocoding);
 				log.info("Clicked on Geocoding");
+				BaseClass.logExtentReport("Clicked on Geocoding");
 				Thread.sleep(5000);
 
 				if (geocoingStatusYesOrNo.toLowerCase().trim().equals("yes")) {
@@ -2737,11 +2821,13 @@ public class CommonLocatorsAndMethod {
 							AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 					jsUtil.clickElementByJS(SelectGeocodingYes);
 					log.info("Select Geocoding - Yes");
+					BaseClass.logExtentReport("Select Geocoding - Yes");
 				} else {
 					WebElement SelectGeocodingNo = driver
 							.findElement(By.xpath("//span[@class='mat-option-text'][contains(.,'No')]"));
 					SelectGeocodingNo.click();
 					log.info("Select Geocoding - No");
+					BaseClass.logExtentReport("Select Geocoding - No");
 				}
 			}
 			Thread.sleep(5000);
@@ -2752,12 +2838,14 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(Continue, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			Continue.click();
 			log.info("Clicked on Continue");
+			BaseClass.logExtentReport("Clicked on Continue");
 			Thread.sleep(10000);
 
 			WebElement ImportButton2 = driver
 					.findElement(By.xpath("//span[@class='mat-button-wrapper'][contains(.,'play_arrow Import')]"));
 			ImportButton2.click();
 			log.info("Clicked on Import");
+			BaseClass.logExtentReport("Clicked on Import");
 
 			Thread.sleep(5000);
 			int after=0;
@@ -2789,6 +2877,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(ClickOnFinish, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(ClickOnFinish);
 			log.info("Clicked on Finish");
+			BaseClass.logExtentReport("Clicked on Finish");
 			Thread.sleep(5000);
 
 			WebElement ConfirmationPopupYes = driver
@@ -2797,6 +2886,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(ConfirmationPopupYes, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			ConfirmationPopupYes.click();
 			log.info("Clicked on Confirmation - Yes");
+			BaseClass.logExtentReport("Clicked on Confirmation - Yes");
 			//Thread.sleep(10000);
 
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
@@ -3789,20 +3879,23 @@ public class CommonLocatorsAndMethod {
 		try {	
 			eleUtil.waitForElementVisibleAndToBeClickable(hubNavigation, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.clickElementByJS(hubNavigation);
+			BaseClass.logExtentReport("Clicked on Hub Navigation");
 			
 			jsUtil.scrollIntoViewTrue(copyRenewButton);
 
 			eleUtil.waitForElementVisibleAndToBeClickable(copyRenewButton, AppConstants.DEFAULT_SHORT_TIME_OUT);
 
 			jsUtil.clickElementByJS(copyRenewButton);
-			log.info("Clicked on Copy/Renew Button");			
+			log.info("Clicked on Copy/Renew Button");
+			BaseClass.logExtentReport("Clicked on Copy/Renew Button");
 
 			WebElement EnterNewPolicyReference = driver
 					.findElement(By.xpath("//input[@formcontrolname='PolicyReference']"));
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_MEDIUM_TIME_OUT, EnterNewPolicyReference);
 			EnterNewPolicyReference.clear();
 			EnterNewPolicyReference.sendKeys(newPolicyNumber);
-			log.info("Enter Policy Number : "+newPolicyNumber);
+			log.info("Enter New Policy Number : "+newPolicyNumber);
+			BaseClass.logExtentReport("Enter New Policy Number : "+newPolicyNumber);
 			
 			// check or uncheck schedule check box
 			if(scheduleCheckBoxStatusYesOrNo.equalsIgnoreCase("Yes")) {
@@ -3813,17 +3906,20 @@ public class CommonLocatorsAndMethod {
 					WebElement ele=driver.findElement(By.xpath("(//div[@class='policy-copy-schedule ng-star-inserted']/div/mat-checkbox)["+i+"]"));
 					ele.click();
 					log.info("Uncheck the Schedule Check box");
-				}				
+				}
+				BaseClass.logExtentReport("Uncheck the Schedule Check box");
 			}			
 			
 			WebElement ClickOnCopy2 = driver.findElement(By.xpath("//span[contains(.,'content_copy Copy')]"));
 			eleUtil.waitForElementVisibleAndToBeClickable(ClickOnCopy2, AppConstants.DEFAULT_SHORT_TIME_OUT);
 			jsUtil.clickElementByJS(ClickOnCopy2);
 			log.info("Clicked on Copy Button");
+			BaseClass.logExtentReport("Clicked on Copy Button");
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(confirmationOk, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			confirmationOk.click();
 			log.info("Confirmation - Ok");
+			BaseClass.logExtentReport("Confirmation - Ok");
 			
 			verifyCreatedPolicy=searchPolicyFromPolicyPageAndOpen(newPolicyNumber);
 
@@ -3892,36 +3988,43 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(quickQuotePlus_Button, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.clickElementByJS(quickQuotePlus_Button);
 			log.info("Clicked on Quick Quote Button");
+			BaseClass.logExtentReport("Clicked on Quick Quote Button");
 			
 			eleUtil.waitForElementPresenceWithFluentWait(AppConstants.DEFAULT_VERY_LONG_TIME_OUT, 2, quickQuoteAutomaticPolicyNumberEle);
 			String quickQuoteAutoPolicy=quickQuoteAutomaticPolicyNumberEle.getText();
 			String s[]=quickQuoteAutoPolicy.split(",");
 			log.info("Auto Generated Policy Number : "+s[0]);
+			BaseClass.logExtentReport("Auto Generated Policy Number : "+s[0]);
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(searchButton, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.clickElementByJS(searchButton);
 			log.info("Clicked on Search Button");
+			BaseClass.logExtentReport("Clicked on Search Button");
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(countyInputGrid, AppConstants.DEFAULT_LONG_TIME_OUT);
 			countyInputGrid.clear();
 			countyInputGrid.sendKeys(countyValue);
 			Thread.sleep(8000);
 			log.info("Enter County Data : "+countyValue);
+			BaseClass.logExtentReport("Enter County Data : "+countyValue);
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(addSingleScheduleData, AppConstants.DEFAULT_LONG_TIME_OUT);
 			eleUtil.waitForElementToBeClickable(AppConstants.DEFAULT_LONG_TIME_OUT, addSingleScheduleData);
 
 			jsUtil.clickElementByJS(addSingleScheduleData);
 			log.info("Select Schedule Data");
+			BaseClass.logExtentReport("Select Schedule Data");
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(runButton, AppConstants.DEFAULT_LONG_TIME_OUT);
 			eleUtil.waitForElementVisibleAndToBeClickable(runButton, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.clickElementByJS(runButton);
 			log.info("Clicked on Run");
+			BaseClass.logExtentReport("Clicked on Run");
 			Thread.sleep(59000);
 			
 			jsUtil.clickElementByJS(saveButton2);
 			log.info("Clicked on Save");
+			BaseClass.logExtentReport("Clicked on Save");
 			Thread.sleep(10000);
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(hubNavigation, AppConstants.DEFAULT_LONG_TIME_OUT);
@@ -3945,6 +4048,7 @@ public class CommonLocatorsAndMethod {
 			eleUtil.waitForElementVisibleAndToBeClickable(scheduleNavigationImage, AppConstants.DEFAULT_LONG_TIME_OUT);
 			jsUtil.clickElementByJS(scheduleNavigationImage);
 			log.info("Clicked on Class Navigation");
+			BaseClass.logExtentReport("Clicked on Class Navigation");
 			Thread.sleep(2000);
 			
 			WebElement selectAllCheckBox = driver.findElement(
@@ -3955,6 +4059,7 @@ public class CommonLocatorsAndMethod {
 			selectAllCheckBox.click();
 			Thread.sleep(1000);
 			log.info("Clicked on - Select All Check Box");
+			BaseClass.logExtentReport("Clicked on - Select All Check Box");
 
 			WebElement rowAction = driver.findElement(
 					By.xpath("//div[@class='class-icon-set-margin class-icon']/span[text()='" + classNameXpath + "']/ancestor::div[@class='schedule-grid ng-star-inserted']/expansion-panel/mat-expansion-panel/div/div/div/div/app-schedules/div/div/div/ag-grid-angular/div/div/div[@role='grid']/div[@ref='eBodyViewport']/div[@ref='leftContainer']/div[@row-id='0']/div[@col-id='show_hide_edit']/app-row-actions/button"));
@@ -3963,30 +4068,37 @@ public class CommonLocatorsAndMethod {
 			rowAction.click();
 			Thread.sleep(1000);
 			log.info("Clicked on Row Action Button");
+			BaseClass.logExtentReport("Clicked on Row Action Button");
 
 			rowActionCopyScheduleButton.click();
 			log.info("Clicked on Row Action Copy Schedule");
+			BaseClass.logExtentReport("Clicked on Row Action Copy Schedule");
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(copySchedulePopupFilterButton, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
 			jsUtil.clickElementByJS(copySchedulePopupFilterButton);
 			log.info("Clicked on Filter Button for Copy Schedule");
+			BaseClass.logExtentReport("Clicked on Filter Button for Copy Schedule");
 			
 			
 			eleUtil.waitForElementVisibleAndToBeClickable(ingridPolicySeachCopySchedule, AppConstants.DEFAULT_SHORT_TIME_OUT);
 			jsUtil.clickElementByJS(ingridPolicySeachCopySchedule);
 			log.info("Ingrid Seach - Policy Number");
+			BaseClass.logExtentReport("Ingrid Seach - Policy Number");
 			ingridPolicySeachCopySchedule.click();
 			ingridPolicySeachCopySchedule.sendKeys(ingridSearchPolicyNumberCopySchedule);
 			log.info("Ingrid Search - Policy Number : "+ingridSearchPolicyNumberCopySchedule);
+			BaseClass.logExtentReport("Ingrid Search - Policy Number : "+ingridSearchPolicyNumberCopySchedule);
 			
 			Thread.sleep(8000);
 			WebElement eleCheck=driver.findElement(By.xpath("(//input[@ref='eInput'])[last()]/parent::div"));
 			eleUtil.waitForElementVisibleAndToBeClickable(eleCheck, AppConstants.DEFAULT_LONG_TIME_OUT);
 			eleCheck.click();
 			log.info("Select Policy");
+			BaseClass.logExtentReport("Select Policy");
 			
 			jsUtil.clickElementByJS(copyButtonForCopySchedule);
 			log.info("Click on Copy");
+			BaseClass.logExtentReport("Click on Copy");
 			
 			WebElement popupConfirmationOK=driver.findElement(By.xpath("(//app-alert-dialog/div)[3]/button"));
 			eleUtil.waitForElementVisibleAndToBeClickable(popupConfirmationOK, AppConstants.DEFAULT_MEDIUM_TIME_OUT);
@@ -3998,6 +4110,7 @@ public class CommonLocatorsAndMethod {
 			jsUtil.clickElementByJS(popupConfirmationOK2);
 			log.info("Verify Success or Fail Message");
 			log.info("Confirmation - OK");
+			BaseClass.logExtentReport("Confirmation - OK");
 					
 		} catch (Exception e) {
 			System.out.println("Issue in Common.copyScheduleFromPolicyPage "+e);

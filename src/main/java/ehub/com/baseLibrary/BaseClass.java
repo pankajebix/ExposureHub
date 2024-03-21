@@ -109,7 +109,7 @@ public class BaseClass {
 	}
 
 	/*
-	 * get the local thread copy of the driver
+	 * Get the local thread copy of the driver
 	 */
 	public synchronized static WebDriver getDriver() {
 		return tlDriver.get();
