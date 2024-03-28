@@ -9,7 +9,7 @@ import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S04quickNavigationPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S04quickNavigationPageTest extends BaseTest{
+public class SCR04_QuickNavigation extends BaseTest{
 	
 	S04quickNavigationPage S04page;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);

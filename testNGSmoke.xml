@@ -19,7 +19,7 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S01createNewPolicyAllClassesPageTest"></class>
+				name="TestSmoke.SCR01_CreateNewPol_AllClasses"></class>
 		</classes>
 	</test>
 
@@ -27,7 +27,7 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S02updatePolicyPageTest"></class>
+				name="TestSmoke.SCR02_UpdatePolicy"></class>
 		</classes>
 	</test>
 
@@ -35,7 +35,7 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S03deletePolicyPageTest"></class>
+				name="TestSmoke.SCR03_DeletePolicy"></class>
 		</classes>
 	</test>
 
@@ -43,7 +43,7 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S04quickNavigationPageTest"></class>
+				name="TestSmoke.SCR04_QuickNavigation"></class>
 		</classes>
 	</test>
 
@@ -51,7 +51,7 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S05mimPageTest"></class>
+				name="TestSmoke.SCR05_MiMNavigation"></class>
 		</classes>
 	</test>
 
@@ -59,7 +59,7 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S06importOnshoreSchedulesPageTest"></class>
+				name="TestSmoke.SCR06_ImportOnshoreSchedules"></class>
 		</classes>
 	</test>
 
@@ -67,7 +67,7 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S07importOffshoreSchedulesPageTest"></class>
+				name="TestSmoke.SCR07_ImportOffshoreSchedules"></class>
 		</classes>
 	</test>
 
@@ -75,9 +75,8 @@
 
 		<classes>
 			<class
-				name="TestSmoke.S08quickQuotePageTest"></class>
+				name="TestSmoke.SCR08_QuickQuote"></class>
 		</classes>
 	</test>
-
 
 </suite>

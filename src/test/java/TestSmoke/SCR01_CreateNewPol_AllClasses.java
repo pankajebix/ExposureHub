@@ -9,7 +9,7 @@ import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S01createNewPolicyAllClassesPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S01createNewPolicyAllClassesPageTest extends BaseTest{
+public class SCR01_CreateNewPol_AllClasses extends BaseTest{
 	
 	 
 	S01createNewPolicyAllClassesPage S01page;

@@ -9,7 +9,7 @@ import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S02updatePolicyPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S02updatePolicyPageTest extends BaseTest{
+public class SCR02_UpdatePolicy extends BaseTest{
 	
 	S02updatePolicyPage S02page;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);

@@ -10,7 +10,7 @@ import ehub.com.pages.CommonLocatorsAndMethod;
 import ehub.com.pagesSmoke.S08quickQuotePage;
 import ehub.com.utils.ExcelUtil;
 
-public class S08quickQuotePageTest extends BaseTest{
+public class SCR08_QuickQuote extends BaseTest{
 	
 	S08quickQuotePage S08page;
 	CommonLocatorsAndMethod common;

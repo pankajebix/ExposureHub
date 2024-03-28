@@ -9,7 +9,7 @@ import ehub.com.constants.AppConstants;
 import ehub.com.pagesSmoke.S03deletePolicyPage;
 import ehub.com.utils.ExcelUtil;
 
-public class S03deletePolicyPageTest extends BaseTest{
+public class SCR03_DeletePolicy extends BaseTest{
 	
 	S03deletePolicyPage S03page;
 	ExcelUtil excUtil = new ExcelUtil(System.getProperty("user.dir") + AppConstants.pathofExcelDataAsPerEnv);

@@ -1,7 +1,5 @@
 package ehub.com.listeners;
 
-import java.awt.Desktop;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -50,13 +48,15 @@ public class ExtentReportListener implements ITestListener {
 		reporter.config().setReportName("Exposure Hub Automation Test Report");
 		reporter.config().setDocumentTitle("Exposure Hub Automation Test Report");
 		
-		String imgPath="https:\\i.ibb.co/NNWygWr/EHub-Logo3.png";
+		// add logo in extent report
+		String imgPath="https://test-eh.ebixexchange.com/assets/images/exposure-hub-logo.svg";
 		String jsCode1="document.getElementsByClassName('logo')[0].style.backgroundImage = 'url(" + imgPath + ")';";
 		String jsCode2="document.getElementsByClassName('logo')[0].style.width= '450%';";
-		String jsCode3="document.getElementsByClassName('search-box')[0].style.paddingLeft='75px';";
+		String jsCode3="document.getElementsByClassName('search-box')[0].style.paddingLeft='95px';";
 		String combinedJsCode = jsCode1 + jsCode2+jsCode3;
 		reporter.config().setJs(combinedJsCode);
-			
+		// add logo in extent report
+		
 		extentReports.attachReporter(reporter);
 		extentReports.setSystemInfo("System", "Window");
 		extentReports.setSystemInfo("Author", "Pankaj Yadav");
@@ -149,5 +149,4 @@ public class ExtentReportListener implements ITestListener {
 	public static synchronized void logExtentReport(String message) {		
 		test.get().log(Status.INFO, message);	
 	}
-
 }
